@@ -157,7 +157,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       </div>
     <div class="container">
       <div class="wrapper">
-        <div class="title"><span>Login fsdfsdfsdfds Form</span></div>
+        <div class="title"><span>Login Form</span></div>
         <form action="sign_in.php" method="POST" autocomplete="off">
           <div class="row">
             <i class="fas fa-user"></i>
