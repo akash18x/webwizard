@@ -237,6 +237,7 @@ $sql_employee_result=mysqli_query($conn,$sql_employee);
         <div class="left_menu_inner">
             <!-- <a href="addfleetnew.php" class="add_fleet_menu">⧃ Add Fleet</a> -->
             <a href="viewfleet2.php" class="add_fleet_menu">⧃ Fleet Management</a>
+            <a href="admin/admindash.php" class="add_fleet_menu">⧃ New Dashboard</a>
             <a href="purchase.php" class="add_fleet_menu">⧃ Purchase Requisition</a>
             <a href="view_req_rental.php" class="add_fleet_menu">⧃ Market Leads</a>
             <a href="marketplace.php" class="add_fleet_menu">⧃ Market Place</a>
@@ -273,8 +274,7 @@ $sql_employee_result=mysqli_query($conn,$sql_employee);
         <div class="secondblock" onclick="open_added_operators()" >
         <div class="added_fleet_notification" <?php if($count_of_dl_notification == 0) echo 'style="display: none;"' ?>><?php echo $count_of_dl_notification ?></div>
         <div class="secondblock_inside1">Operator Added </div>
-            <div class="secondblock_inside2"><?php echo $total_count_operator ?></div>
-
+        <div class="secondblock_inside2"><?php echo  $total_count_operator ?></div>
         </div>
         <div class="thirdblock" onclick="open_market_leads()">
         <!-- <div class="added_fleet_notification" <?php if($total_new_leads == 0) echo 'style="display: none;"' ?>><?php echo $count_of_dl_notification ?></div> -->

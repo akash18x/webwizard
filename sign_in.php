@@ -105,29 +105,52 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <html lang="en">
 <head>
     <meta charset="UTF-8">      <link rel="icon" href="favicon.jpg" type="image/x-icon">
-
+  <link rel="stylesheet" href="footer.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="main.js"></script>
     <title>SignIn</title>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet"> 
+
+<link
+rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+/>
+<link
+href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+rel="stylesheet"
+integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+crossorigin="anonymous"
+/>
+
+<!-- <link rel="stylesheet" href="assets/css/style.css"> -->
+
     <link rel="stylesheet" href="style.css">
     <link rel="icon" href="favicon.jpg" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
 <link rel="preconnect" href="https://fonts.gstatic.com">
 <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Play&display=swap" rel="stylesheet">
 </head>
 <body>
 <div class="navbar1" id="main_nav">
-        <div class="iconcontainer">
-        <ul><li><a href="sign_in.php">Home</a></li>
-        <li><a onclick="scroll_to_service()" >Services</a></li>
-            <li><a onclick="scroll_to_aboutus()">About Us</a></li>
-            <li><a onclick="scroll_to_contactus()">Contact Us</a></li>
+<div class="nav__data">
+  <div class="nav_logo"></div>
+</div>
+      <div class="iconcontainer">
+        <ul>
+          <li><a href="sign_in.php">Home</a></li>
+        <li><a href="#" onclick="scroll_to_service()" >Services</a></li>
+            <li><a href="#" onclick="scroll_to_aboutus()">About Us</a></li>
+            <li><a href="#" onclick="scroll_to_contactus()">Contact Us</a></li>
             <li><a href="sign_up.php">SignUp</a></li></ul>
         </div>
     </div>
+    <br><br>
     <?php
     if($login){
         echo '<label>
@@ -140,7 +163,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       </label>';
     }
     if($showError){
-        echo '<label>
+        echo '<label class="errornotification">
         <input type="checkbox" class="alertCheckbox" autocomplete="off" />
         <div class="alert error">
           <span class="alertClose">X</span>
@@ -149,16 +172,25 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         </div>
       </label>';
     }
+  
     ?>
-    <br><br><br><br><br>
+    <br><br>
     <div class="header_container">
       <div class="font_header_cont">
-        <div class="tagline">Empowering Business, Elevating Success Your Premier Crane Rental Ecosystem</div>
+        <div class="tag_container">
+        <div class="tagline">Empowering Business, Elevating Success Your Premier Crane Rental Ecosystem</div></div>
+      <div class="gif_contaier"><marquee class="gifmarquee" behavior="smooth" direction="left">
+      <img src="gif1.gif" alt=""><img class="flipimage" src="gif2.gif" alt=""><img src="gif4.gif" alt=""><img class="flipimage" src="truck7.gif" alt="">
+
+
+      </marquee>
+    <!-- <div class="staticgif_container"><img src="static2.gif" alt=""><img src="staticgif1.gif" alt=""></div> -->
+    </div>
       </div>
     <div class="container">
       <div class="wrapper">
         <div class="title"><span>Login Form</span></div>
-        <form action="sign_in.php" method="POST" autocomplete="off">
+        <form action="sign_in.php" class="login_form" method="POST" autocomplete="off">
           <div class="row">
             <i class="fas fa-user"></i>
             <input type="text" name="email" value="<?php if(isset($log_email)){ echo $log_email;} ?>"  placeholder="Email " required>
@@ -183,80 +215,180 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       </div>
     </div>
 </div>
+<section>
+        <div class="service-container">
+          <h3 class="service-title">Services</h3>
+          <div class="row">
+            <div class="col-md-4">
+              <div class="main">
+                <div class="service newcard">
+                  <div class="service-logo">
+                    <img src="assets/images/jcb.png" alt="" />
+                  </div>
+                  <h4>Market Lead</h4>
+                  <p>
+                    Our crane rental ecosystem features a robust market lead function, allowing potential clients to easily submit inquiries for crane rentals through our portal. With a user-friendly submission form capturing essential project details and contact information, we ensure seamless communication and prompt responses
+                  </p>
+                </div>
+              </div>
+            </div>
+  
+            <div class="col-md-4">
+              <div class="main">
+                <div class="service newcard">
+                  <div class="service-logo">
+                    <img src="assets/images/service7.png" alt="" />
+                  </div>
+                  <h4>Market Place</h4>
+                  <p>
+                    Our marketplace simplifies the process of buying and selling crane equipment. Users can easily list their cranes for sale by uploading photos and details, attracting potential buyers seeking reliable, pre-owned equipment. Simultaneously, buyers can browse a curated selection of used cranes available on our platform.
+                  </p>
+                </div>
+              </div>
+            </div>
+  
+            <div class="col-md-4">
+              <div class="main">
+                <div class="service newcard">
+                  <div class="service-logo">
+                    <img src="assets/images/service6.png" alt="" />
+                  </div>
+                  <h4>Fleet Management</h4>
+                  <p>
+                    Our fleet management solution empowers users to efficiently add, monitor, and maintain their fleets with ease. Users can seamlessly input their fleet details, ensuring comprehensive tracking and management capabilities. Crucially, our system notifies users of impending document expirations.
+                  </p>
+                </div>
+              </div>
+            </div> 
 
-<div class="services_section" id="service_section_content">
-<!-- <div class="service_innerdata_top"> -->
-    <p class="service_heading001">Discover the unparalleled suite of services offered by Fleet EIP, where excellence meets innovation</p>
+            <div class="col-md-4">
+              <div class="main main_secondrow">
+                <div class="service newcard">
+                  <div class="service-logo">
+                    <img src="assets/images/service7.png" alt="" />
+                  </div>
+                  <h4 class="service_heading">Operator Management</h4>
+                  <p>
+                    Our operator management allows users to find operators based on specific needs. Users can view operator ratings and feedback from previous employers, ensuring informed hiring decisions.Users can match their operational requirements with skilled operators, leveraging ratings and reviews for confident hiring.
+                  </p>
+                </div>
+              </div>
+            </div> 
 
-    <!-- </div> -->
-  <div class="service_innerdata" id="first_service_row">
-   
-    <div class="service_card">
-      <div class="sservice_heading">Market Leads</div>
-      <div class="service_content01"><p>Our crane rental ecosystem features a robust market lead function, allowing potential clients to easily submit inquiries for crane rentals through our portal. With a user-friendly submission form capturing essential project details and contact information, we ensure seamless communication and prompt responses</p></div>
-    </div>
-    <div class="service_card">
-    <div class="sservice_heading">Market Place</div>
-      <div class="service_content01"><p>Our marketplace simplifies the process of buying and selling crane equipment. Users can easily list their cranes for sale by uploading photos and details, attracting potential buyers seeking reliable, pre-owned equipment. Simultaneously, buyers can browse a curated selection of used cranes available on our platform.</p></div>
+            <div class="col-md-4">
+              <div class="main main_secondrow">
+                <div class="service newcard">
+                  <div class="service-logo">
+                    <img src="assets/images/service6.png" alt="" />
+                  </div>
+                  <h4 class="service_heading">Accounts Management</h4>
+                  <p>
+                  Our account management feature simplifies creating, tracking, and managing quotations and bills. It provides clear visibility into pending and cleared bills, streamlining financial oversight for efficient business operations and fostering growth and profitability.
 
-    </div>
-    <div class="service_card">
-    <div class="sservice_heading">Fleet Management</div>
-      <div class="service_content01"><p>Our fleet management solution empowers users to efficiently add, monitor, and maintain their fleets with ease. Users can seamlessly input their fleet details, ensuring comprehensive tracking and management capabilities. Crucially, our system notifies users of impending document expirations.</p></div>
 
-    </div>
+
 </div>
-<div class="service_innerdata" id="second_service_row">
-    <div class="service_card">
-    <div class="sservice_heading">Operator Management</div>
-      <div class="service_content01"><p>Our operator management allows users to find operators based on specific needs. Users can view operator ratings and feedback from previous employers, ensuring informed hiring decisions.Users can  match their operational requirements with skilled operators, leveraging ratings and reviews for confident hiring.
-</p></div>
+              </div>
+            </div> 
 
-    </div>
-    <div class="service_card">
-    <div class="sservice_heading">Accounts Management</div>
-      <div class="service_content01"><p>
+            <div class="col-md-4">
+              <div class="main main_secondrow">
+                <div class="service newcard">
+                  <div class="service-logo">
+                    <img src="assets/images/jcb.png" alt="" />
+                  </div>
+                  <h4>Purchase Requisition</h4>
+                  <p>
+                    Our purchase requisition system facilitates direct interaction between OEMs listing their fleets and users seeking transparency in procurement. It ensures seamless communication and clear visibility, enabling efficient fleet acquisition with confidence.
+                  </p>
+                </div>
+              </div>
+            </div>
+  
 
-Our account management feature enables users to effortlessly create and manage quotations and bills. Users can track pending and cleared bills, ensuring streamlined financial oversight and efficient business operations.</p></div>
+          </div>
+        </div>
+      </section>  
 
-    </div>
-    <div class="service_card">
-    <div class="sservice_heading">Purchase Requisition</div>
-      <div class="service_content01"><p>
 
-Our purchase requisition system facilitates direct interaction between OEMs listing their fleets and users seeking transparency in procurement. It ensures seamless communication and clear visibility, enabling efficient fleet acquisition with confidence.</p></div>
-
-    </div>
-</div>
-</div>
 <br>
-<div class="about_us_section" id="abtus_content">
-<div class="abtusimg"></div>
-
-  <div class="aboutus_data">
-
-    <div class="data_container" id="abt_us_section">
-      <p class="heading_abtus">ABOUT US :</p>
-    <p class="first_para_abtus">Welcome to FleetEIP, the ultimate solution for
-                your crane needs. We offer a crane management ecosystem that present to you a wide range of services,
-               including crane purchase, rental, maintenance, monitoring, and optimization. 
-               Our skilled and trained staff are ready to assist you with any
-               crane-related issue, from booking to delivery, from installation to operation, and 
-               from inspection to repair.</p><br>
-               <p>Our mission is to deliver high-quality crane solutions that meet the needs of our clients while ensuring safety, efficiency, and excellence in every project.
-                At FleetEIP, we value safety, quality, 
-            and customer satisfaction above all. We follow the highest standards of safety and
-             compliance, and we ensure that our services are well-maintained and regularly inspected. 
-             and strive to deliver the best service and 
-            support to our customers, from planning and execution to after-sales and feedback
-            </p>
-
-
-    </div>
-  </div>
-</div>
 <br>
-<footer class="sign_up_footer" id="footer_content">
+<footer class="new_footer_area bg_color">
+        <div class="new_footer_top">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-3 col-md-6">
+                        <div class="f_widget company_widget wow fadeInLeft" data-wow-delay="0.2s">
+                            <h3 class="f-title f_600 t_color f_size_18">Get in Touch</h3>
+                            <p>Don’t miss any updates of our new templates and extensions.!</p>
+                            <form action="#" class="f_subscribe_two mailchimp" method="post" novalidate="true" _lpchecked="1">
+                                <input type="text" name="EMAIL" class="form-control memail" placeholder="Email">
+                                <button class="btn btn_get btn_get_two" type="submit">Subscribe</button>
+                                <p class="mchimp-errmessage" style="display: none;"></p>
+                                <p class="mchimp-sucmessage" style="display: none;"></p>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="f_widget about-widget pl_70 wow fadeInLeft" data-wow-delay="0.4s">
+                            <h3 class="f-title f_600 t_color f_size_18">Download</h3>
+                            <ul class="list-unstyled f_list">
+                                <li><a href="#">Company</a></li>
+                                <li><a href="#">Android App</a></li>
+                                <li><a href="#">iOS App</a></li>
+                                <li><a href="#">Desktop</a></li>
+                                <li><a href="#">Projects</a></li>
+                                <li><a href="#">My tasks</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="f_widget about-widget pl_70 wow fadeInLeft" data-wow-delay="0.6s">
+                            <h3 class="f-title f_600 t_color f_size_18">Help</h3>
+                            <ul class="list-unstyled f_list">
+                                <li><a href="#">FAQ</a></li>
+                                <li><a href="#">Terms &amp; conditions</a></li>
+                                <li><a href="#">Reporting</a></li>
+                                <li><a href="#">Documentation</a></li>
+                                <li><a href="#">Support Policy</a></li>
+                                <li><a href="#">Privacy</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="f_widget social-widget pl_70 wow fadeInLeft" data-wow-delay="0.8s">
+                            <h3 class="f-title f_600 t_color f_size_18">Team Solutions</h3>
+                            <div class="f_social_icon">
+                                <a href="#" class="fab fa-facebook"></a>
+                                <a href="#" class="fab fa-twitter"></a>
+                                <a href="#" class="fab fa-linkedin"></a>
+                                <a href="#" class="fab fa-pinterest"></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer_bg">
+                <div class="footer_bg_one"></div>
+                <div class="footer_bg_two"></div>
+            </div>
+        </div>
+        <div class="footer_bottom">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-6 col-sm-7">
+                        <p class="mb-0 f_400">© FleetEIP.</p>
+                    </div>
+                    <div class="col-lg-6 col-sm-5 text-right">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+
+<!-- <footer class="sign_up_footer" id="footer_content">
   <div class="footer_content_main">
     <div class="social_line"><img src="facebook_logo.png" alt="Facebook" onclick="window.open('https://www.facebook.com/fleetEIP/', '_blank');" style="cursor: pointer;"><img src="linkedin.png"  alt="LinkedIn" onclick="window.open('https://www.linkedin.com/company/fleeteip/', '_blank');" style="cursor: pointer;"></div>
     <p>&copy; 2024 FleetEIP. All rights reserved. Unauthorized use or reproduction of any content is strictly prohibited.</p>
@@ -269,7 +401,7 @@ Our purchase requisition system facilitates direct interaction between OEMs list
 
   </div>
 
-</footer>
+</footer> -->
     
 
 
