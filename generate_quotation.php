@@ -60,12 +60,30 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $fuel = $_POST['fuel_per_hour'];
     $tentative = isset($_POST['tentative_date']) ? $_POST['tentative_date'] : "none";
 
+
+    $period=$_POST['contract_period_select'];
+    $adv_pay=$_POST['advance_payment_select'];
+    $crew=$_POST['operating_crew_select'];
+    $room=$_POST['operator_room_scope_select'];
+    $food=$_POST['crew_food_scope_select'];
+    $travel=$_POST['crew_travelling_select'];
+    $brkdown=$_POST['breakdown_select'];
+    $ot_payment=$_POST['ot_payment'];
+    $payment_terms_select=$_POST['payment_terms_select'];
+    $delay_pay=$_POST['delay_pay'];
+    $assembly=$_POST['equipment_assembly_select'];
+    $tpi=$_POST['tpi_scope_select'];
+    $safety_security=$_POST['safety_security_select'];
+    $tools_tackels=$_POST['tools_tackels'];
+    $gst=$_POST['gst'];
+    $force_clause=$_POST['force_clause'];
+
     if(!empty(($_POST['fleet_category'])) && !empty(($_POST['type']))){
         $sql_insertion="INSERT INTO `quotation_generated` (`sender_office_address`,`tentative_date`,`contact_person_cell`,`yom`,`cap`,`cap_unit`,`boom`,`jib`,`luffing`,`availability`,`fuel/hour`,`make`,`model`,`sub_Type`,`quote_date`, `to_name`, `to_address`, `contact_person`, `email_id_contact_person`, 
         `site_loc`, `asset_code`, `hours_duration`, `days_duration`, `sunday_included`, `rental_charges`, `mob_charges`, `demob_charges`,
-         `crane_location`, `adblue`, `sender_name`, `sender_number`, `sender_contact`, `company_name`) 
+         `crane_location`, `adblue`, `sender_name`, `sender_number`, `sender_contact`, `company_name`,`period_contract`, `adv_pay`, `crew`, `room`, `food`, `travel`, `brkdown`, `ot_pay`, `pay_terms`, `delay_pay`, `equipment_assembly`, `tpi`, `safety`, `tools`, `gst`, `force_clause`) 
         VALUES ('$sender_office_address','$tentative','$contact_peson_cell','$yom_new_fleet','$new_fleet_cap','$newfleet_cap','$boomLength','$jibLength','$luffingLength','$availability','$fuel','$newfleetmake','$newfleetmodel','$type','$quote_date', '$to_name', '$to_address', '$contact_person_name', '$email_id', '$site_location', '$asset_code', '$hours_duration',
-         '$days_duration', '$condition', '$rental_charges', '$mob_charges', '$demob_charges', '$location', '$adblue', '$sender', '" .$sender_name['mob_number'] ."', '" .$sender_name['email'] ."', '$companyname001')";
+         '$days_duration', '$condition', '$rental_charges', '$mob_charges', '$demob_charges', '$location', '$adblue', '$sender', '" .$sender_name['mob_number'] ."', '" .$sender_name['email'] ."', '$companyname001','$period','$adv_pay','$crew','$room','$food','$travel','$brkdown','$ot_payment','$payment_terms_select','$delay_pay','$assembly','$tpi','$safety_security','$tools_tackels','$gst','$force_clause')";
          $result_insertion = mysqli_query($conn, $sql_insertion);
 
          if ($result_insertion) {
@@ -78,9 +96,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 else{
     $sql_insertion1="INSERT INTO `quotation_generated` (`sender_office_address`,`tentative_date`,`contact_person_cell`,`yom`,`cap`,`cap_unit`,`boom`,`jib`,`luffing`,`availability`,`fuel/hour`,`make`,`model`,`sub_Type`,`quote_date`, `to_name`, `to_address`, `contact_person`, `email_id_contact_person`, 
         `site_loc`, `asset_code`, `hours_duration`, `days_duration`, `sunday_included`, `rental_charges`, `mob_charges`, `demob_charges`,
-         `crane_location`, `adblue`, `sender_name`, `sender_number`, `sender_contact`, `company_name`) 
+         `crane_location`, `adblue`, `sender_name`, `sender_number`, `sender_contact`, `company_name`,`period_contract`, `adv_pay`, `crew`, `room`, `food`, `travel`, `brkdown`, `ot_pay`, `pay_terms`, `delay_pay`, `equipment_assembly`, `tpi`, `safety`, `tools`, `gst`, `force_clause`) 
         VALUES ('$sender_office_address','$tentative','$contact_peson_cell','". $row_specs['yom'] . "','". $row_specs['capacity'] . "','". $row_specs['unit'] . "','". $row_specs['boom_length'] . "','". $row_specs['jib_length'] . "','". $row_specs['luffing_length'] . "','$availability','$fuel','". $row_specs['make'] . "','". $row_specs['model'] . "','". $row_specs['sub_type'] . "','$quote_date', '$to_name', '$to_address', '$contact_person_name', '$email_id', '$site_location', '$asset_code', '$hours_duration',
-         '$days_duration', '$condition', '$rental_charges', '$mob_charges', '$demob_charges', '$location', '$adblue', '$sender', '" .$sender_name['mob_number'] ."', '" .$sender_name['email'] ."', '$companyname001')";
+         '$days_duration', '$condition', '$rental_charges', '$mob_charges', '$demob_charges', '$location', '$adblue', '$sender', '" .$sender_name['mob_number'] ."', '" .$sender_name['email'] ."', '$companyname001','$period','$adv_pay','$crew','$room','$food','$travel','$brkdown','$ot_payment','$payment_terms_select','$delay_pay','$assembly','$tpi','$safety_security','$tools_tackels','$gst','$force_clause')";
 
         $result_insertion1= mysqli_query($conn, $sql_insertion1);
 
@@ -364,11 +382,24 @@ if($showAlertuser){
             <input type="date" placeholder="" class="input02">
             <label for="" class="placeholder2">Tentative Date Of Availability</label>
         </div>
-        <div class="outer02">
         <div class="trial1">
-            <input type="text" class="input02" name="hours_duration" placeholder="">
-            <label class="placeholder2" for="">Duration In Hours</label>
+            <select name="shiftinfo" id="select_shift" class="input02" onchange="shift_hour()">
+                <option value=""disabled selected>Select Shift</option>
+                <option value="Single Shift">Single Shift</option>
+                <option value="Double Shift">Double Shift</option>
+                <option value="lexi Shift">Flexi Shift</option>
+            </select>
         </div>
+        <div class="trial1" id="single_Shift_hour">
+            <input type="text" class="input02" name="hours_duration" placeholder="" >
+            <label class="placeholder2" for="">Shift Duration In Hours</label>
+        </div>
+        <div class="trial1" id="othershift_enginehour">
+            <input type="text" class="input02" name="" placeholder="" >
+            <label class="placeholder2" for="">Engine Hours</label>
+        </div>
+
+        <div class="outer02">
         <div class="trial1">
             <input type="text" class="input02" name="days_duration" placeholder="">
             <label class="placeholder2" for="">Duration Of Days In Month</label>
@@ -417,7 +448,158 @@ if($showAlertuser){
     <textarea type="text" placeholder="" name="sender_office_address" class="input02"><?php echo $row_companyaddress['company_address'] ;?></textarea>
     <label for="" class="placeholder2">Sender Office Address</label>
     </div>
-    <hr>
+    <div class="terms_container012">
+    <p class="heading_terms">Terms & Conditions :
+
+</p>
+
+
+<p class="terms_condition">
+    <strong>Period Of Contract :</strong> Minimum Order Shall Be 
+    <select name="contract_period_select" id="contract_period_select">
+        <option value="1 Month">1 Month</option>
+        <option value="2 Month">2 Months</option>
+        <option value="3 Month">3 Months</option>
+        <option value="6 Month">6 Months</option>
+        <option value="9 Month">9 Months</option>
+        <option value="12 Month">12 Months</option>
+        <option value="18 Month">18 Months</option>
+        <option value="24 Month">24 Months</option>
+    </select>
+</p>
+
+<p class="terms_condition">
+    <strong>Advance Payment :</strong> 
+    <select name="advance_payment_select" id="advance_payment_select">
+        <option value="NA">Not Applicable</option>
+        <option value="Mobilization + Rental Charges">Applicable - Mobilization + Rental Charges</option>
+        <option value="Mob+Demob+Rental">Applicable - Mobilization + Rental Charges + Demobilization Charges</option>
+    </select>
+</p>
+
+<p class="terms_condition">
+    <strong>Operating Crew :</strong> 
+    <select name="operating_crew_select" id="operating_crew_select">
+        <option value="Single Operator">Single Operator</option>
+        <option value="Double Operator">Double Operator</option>
+        <option value="Single Operator + Helper">Single Operator + Helper</option>
+        <option value="Double Operator + Helper">Double Operator + Helper</option>
+    </select>
+</p>
+
+<p class="terms_condition">
+    <strong>Operator Room Scope :</strong> 
+    <select name="operator_room_scope_select" id="operator_room_scope_select">
+        <option value="NA">Not Applicable</option>
+        <option value="Client Scope">In Client Scope</option>
+        <option value="Rental Company Scope">In Rental Company Scope</option>
+    </select>
+</p>
+
+<p class="terms_condition">
+    <strong>Crew Food Scope :</strong>  
+    <select name="crew_food_scope_select" id="crew_food_scope_select">
+        <option value="NA">Not Applicable</option>
+        <option value="Client Scope">In Client Scope</option>
+        <option value="Rental Company Scope">In Rental Company Scope</option>
+    </select>
+</p>
+
+<p class="terms_condition">
+    <strong>Crew Travelling :</strong>  
+    <select name="crew_travelling_select" id="crew_travelling_select">
+        <option value="NA">Not Applicable</option>
+        <option value="Client Scope">In Client Scope</option>
+        <option value="Rental Company Scope">In Rental Company Scope</option>
+    </select>
+</p>
+
+<p class="terms_condition">
+    <strong>Breakdown :</strong> 
+    <select name="breakdown_select" id="breakdown_select">
+        <option value="NA">Free Time - Not Applicable</option>
+        <option value="Free Time - First 6 Hours">Free Time - First 6 Hours</option>
+        <option value="Free Time - First 12 Hours">Free Time - First 12 Hours</option>
+    </select> 
+    After free time, breakdown charges to be deducted on pro-rata basis
+</p>
+
+<p class="terms_condition">
+    <strong>Payment Terms :</strong> 
+    <select name="payment_terms_select" id="payment_terms_select">
+        <option value="7 Days">Within 7 Days Of invoice submission</option>
+        <option value="10 Days">Within 10 Days Of invoice submission</option>
+        <option value="30 Days">Within 30 Days Of invoice submission</option>
+        <option value="45 Days">Within 45 Days Of invoice submission</option>
+    </select>
+</p>
+
+
+
+
+<p class="terms_condition">
+    <strong>Equipment Assembly :</strong> 
+    <select name="equipment_assembly_select" id="equipment_assembly_select">
+        <option value="NA">Not Applicable</option>
+        <option value="Unloading + Assembly + Dismentling + Loading">Unloading + Assembly + Dismentling + Loading</option>
+        <option value="Unloading & Loading">Unloading & Loading</option>
+    </select>
+</p>
+
+<p class="terms_condition">
+    <strong>TPI Scope :</strong> 
+    <select name="tpi_scope_select" id="tpi_scope_select">
+        <option value="">Not Required</option>
+        <option value="In Client Scope">In Client Scope</option>
+        <option value="In Rental Company">In Rental Company</option>
+    </select>
+</p>
+
+<p class="terms_condition">
+    <strong>Safety And Security :</strong> 
+    <select name="safety_security_select" id="safety_security_select">
+        <option value="">Not Required</option>
+        <option value="In Client Scope">In Client Scope</option>
+        <option value="In Rental Company">In Rental Company</option>
+    </select>
+</p>
+
+
+
+
+<p class="terms_condition">
+    <strong>GST :</strong>
+<textarea name="gst" id="" cols="30" rows="1" class="terms_textarea"> Applicable. Extra payable at actual invoice value at 18%.</textarea>
+</p>
+
+
+<p class="terms_condition">
+    <strong>Over time payment :</strong>
+<textarea name="ot_payment" id="" cols="30" rows="2" class="terms_textarea"> Applicable. OT charges at 100% pro-rata basis payable if equipment has worked beyond stipulated work shift, engine hours and on Sundays,National holidays</textarea>
+</p>
+
+<p class="terms_condition">
+    <strong>Delay payment clause :</strong>
+<textarea name="delay_pay" id="" cols="30" rows="3" class="terms_textarea"> In case, the payment credit terms are not honoured, we reserve the right to hault the machine operators, and our rental charges shall be in force. Additionally, an interest of 18% PA to be charges on outstanding amount.</textarea>
+</p>
+
+
+
+
+<p class="terms_condition">
+    <strong>Tools & Tackles :</strong>
+<textarea name="tools_tackels" id="" cols="30" rows="2" class="terms_textarea"> Related Tools And Tackles , Required Safety PPE Kit And Gears To Be Provided By Client On FOC basis.</textarea>
+</p>
+
+<p class="terms_condition">
+    <strong>Force Majeure clause :</strong>
+<textarea name="force_clause" id="" cols="30" rows="3" class="terms_textarea"> If the equipment deployment gets delayed due to transit delays, plants related gate pass, loading at client site, forces of nature and reasons beyond our control, no penalty shall be levied on us.</textarea>
+</p>
+
+
+
+
+    </div>
 <button class="quotation_submit" type="submit">SUBMIT</button>
 <br><br>
 

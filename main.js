@@ -835,4 +835,19 @@ function addfleetnew(){
 function view_op_screen(){
     document.getElementById("addop_new").style.display="block";
 }
+function shift_hour() {
+    const select_shift = document.getElementById("select_shift");
+    const single_Shift_hour = document.getElementById("single_Shift_hour");
+    const othershift_enginehour = document.getElementById("othershift_enginehour");
 
+    if (select_shift.value === 'Single Shift') {
+        single_Shift_hour.style.display = 'block';
+        othershift_enginehour.style.display = 'none'; // Hide the other shift hour input if it's visible
+    } else if (select_shift.value === 'Double Shift' || select_shift.value === 'Triple Shift') {
+        othershift_enginehour.style.display = 'block';
+        single_Shift_hour.style.display = 'none'; // Hide the single shift hour input if it's visible
+    } else {
+        single_Shift_hour.style.display = 'none';
+        othershift_enginehour.style.display = 'none';
+    }
+}

@@ -49,12 +49,14 @@ $sql_employee_result=mysqli_query($conn,$sql_employee);
     <meta charset="UTF-8">
     <link rel="icon" href="../favicon.jpg" type="image/x-icon">
     <script src="main.js"></script>
+    <script src="admin.js"></script>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     
     <!----======== CSS ======== -->
     <link rel="stylesheet" href="admin.css"> 
+
     <!-- <link rel="stylesheet" href="./style.css"> -->
      
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css"> 

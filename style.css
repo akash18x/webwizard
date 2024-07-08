@@ -1,3 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
+
+
 *{
     margin: 0;
     padding: 0;
@@ -7,8 +11,6 @@
     font-weight: 300;
     
 }
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
 
 ::selection{
   background: rgba(190, 28, 6, 0.3);
@@ -4244,6 +4246,7 @@ height: 30px;
     align-items: center;
     justify-content: center;
     /* border: 2px solid blue; */
+    margin-top: 20px;
 }
 .generate_quote_container{
     display: flex;
@@ -4251,7 +4254,7 @@ height: 30px;
     flex-direction: column;
     width: 70%;
     gap: 12px;
-    margin-top: 20px;
+    margin-top: 20px!important;
     border: 2px solid #c1121f;
     
 }
@@ -4275,6 +4278,7 @@ height: 30px;
     border: none;
     font-size: 17px;
     cursor: pointer;
+    margin-bottom: 20px;
 }
 .entire_quotation_container{
     width: 97%;
@@ -4478,6 +4482,12 @@ height: 30px;
     width: 97%;
     border: none;
     margin-top: 8px;
+}
+.terms_textarea{
+    font-size: 16px;
+    width: 97%;
+    border: none;
+    /* border:1px solid rebeccapurple; */
 }
 .container_outer{
     /* height: 1350px; */
@@ -5949,9 +5959,6 @@ strong{
   .service:hover img {
     transform: rotate(360deg);
   }
-.new_footer_top{
-    /* border: 2px solid black!important; */
-}
 .mainbody1{
     background-color: #FAFCFF;
 }
@@ -6024,4 +6031,23 @@ strong{
   }
   .socials a{
     text-decoration: none!important;
+  }
+  #senders_Add{
+    display: none;
+  }
+  #single_Shift_hour{
+    display: none;
+  }
+  #othershift_enginehour{
+    display: none;
+  }
+  .terms_container012{
+    width: 80%;
+    gap: 5px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: column;
+    margin-top: 70px;
+    /* border: 1px solid black; */
   }
