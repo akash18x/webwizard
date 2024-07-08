@@ -101,18 +101,20 @@
     background-position: left;
     background-size: contain;
     height: 400px;
+    margin-top: 15px;
     display: flex;
     align-items: center;
     justify-content: flex-start;
     /* border: 1px solid red; */
 }
 .footer_content_main{
-    width: 100%;
-    height: 70%;
+    width: 100%!important;
+    height: auto;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    /* border: 1px solid black; */
 
 }
 .social_line{
@@ -131,8 +133,8 @@
     
 }
 .footer_content_main p{
-    font-size: 16px;
-    color: black;
+    font-size: 17px;
+    color: #9175F9;
 }
 .footer_Secondary{
     width: 100%;
@@ -327,6 +329,10 @@
   align-items: center;
   justify-content: center;
 }
+.title span{
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
 .wrapper form{
   padding: 30px 25px 25px 25px;
 }
@@ -462,7 +468,7 @@ font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Ox
     display: flex;
     justify-content: right;
     align-items: center;
-    width: 80%;
+    width: 70%;
     height: 100%;
     /* border: 1px solid green; */
 }
@@ -5844,9 +5850,23 @@ strong{
     text-align: center;
     margin: 30px auto 40px;
     color: black; 
-    font-size: 3rem;
+    font-size: 20px;
+    font-family: "poppins";
+    width: 100%;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* border:1px solid black;
+    background-color: #1c549e;
+    border-radius: 8px; */
   }
-  
+  .naviconnew{
+    color: hsl(220, 48%, 28%); /* Text color using HSL color model */
+  }
+  .naviconnew:hover{
+    text-decoration: underline;
+  }
   
   .service-container {
     display: flex;
@@ -5928,4 +5948,80 @@ strong{
   
   .service:hover img {
     transform: rotate(360deg);
+  }
+.new_footer_top{
+    /* border: 2px solid black!important; */
+}
+.mainbody1{
+    background-color: #FAFCFF;
+}
+#addopbtn_newdesign{
+    width: 30%!important;
+    margin-left: 10px;
+}
+
+
+.customButton {
+    font-family: inherit;
+    font-size: 20px;
+    background: royalblue;
+    color: white;
+    padding: 0.7em 1em;
+    padding-left: 0.9em;
+    width: 50%; /* Set width to 50% */
+    display: flex;
+    align-items: center;
+    border: none;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: all 0.2s;
+    cursor: pointer;
+  }
+  
+  .customButton span {
+    display: block;
+    margin-left: 0.3em;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .customButton svg {
+    display: block;
+    transform-origin: center center;
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .customButton:hover .customSvgWrapper {
+    animation: fly-1 0.6s ease-in-out infinite alternate;
+  }
+  
+  .customButton:hover svg {
+    transform: translateX(15em) rotate(45deg) scale(1.1);
+  }
+  
+  .customButton:hover span {
+    transform: translateX(15em);
+  }
+  .customButtonnew:hover svg {
+    transform: translateX(6em) rotate(45deg) scale(1.1)!important;
+  }
+  
+  .customButtonnew:hover span {
+    transform: translateX(6em)!important;
+  }
+  
+  .customButton:active {
+    transform: scale(0.95);
+  }
+  
+  @keyframes fly-1 {
+    from {
+      transform: translateY(0.1em);
+    }
+  
+    to {
+      transform: translateY(-0.2em);
+    }
+  }
+  .socials a{
+    text-decoration: none!important;
   }

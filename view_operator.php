@@ -206,8 +206,50 @@ if($showAlert){
   </label>';
  }
 
-?>   
-<div class="view_op_btn"><button class="add_fleet_manager_btn" onclick="view_op_screen()">Add Fleet Manager</button><button id="search_op" class="add_fleet_manager_btn">Search Operator</button></div>
+?> 
+<div class="view_op_btn">
+<button class="customButton customButtonnew" onclick="view_op_screen()" id="addopbtn_newdesign">
+  <div class="customSvgWrapper-1">
+    <div class="customSvgWrapper">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+        width="24"
+        height="24"
+      >
+        <path fill="none" d="M0 0h24v24H0z"></path>
+        <path
+          fill="currentColor"
+          d="M1.946 9.315c-.522-.174-.527-.455.01-.634l19.087-6.362c.529-.176.832.12.684.638l-5.454 19.086c-.15.529-.455.547-.679.045L12 14l6-8-8 6-8.054-2.685z"
+        ></path>
+      </svg>
+    </div>
+  </div>
+  <span>Add Fleet Manager</span>
+</button>
+<button class="customButton customButtonnew" id="addopbtn_newdesign">
+  <div class="customSvgWrapper-1">
+    <div class="customSvgWrapper">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+        width="24"
+        height="24"
+      >
+        <path fill="none" d="M0 0h24v24H0z"></path>
+        <path
+          fill="currentColor"
+          d="M1.946 9.315c-.522-.174-.527-.455.01-.634l19.087-6.362c.529-.176.832.12.684.638l-5.454 19.086c-.15.529-.455.547-.679.045L12 14l6-8-8 6-8.054-2.685z"
+        ></path>
+      </svg>
+    </div>
+  </div>
+  <span>Add Fleet Button</span>
+</button>
+
+
+</div>  
+<!-- <div class="view_op_btn"><button class="add_fleet_manager_btn" onclick="view_op_screen()">Add Fleet Manager</button><button id="search_op" class="add_fleet_manager_btn">Search Operator</button></div> -->
 <div class="modal_new_fleetadd" id="addop_new">
 <form action="view_operator.php" class="addoperator_form" method="POST" autocomplete="off" enctype="multipart/form-data">
         <div class="addoperator_container">

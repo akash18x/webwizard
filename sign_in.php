@@ -136,7 +136,7 @@ crossorigin="anonymous"
 <link rel="preconnect" href="https://fonts.gstatic.com">
 <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Play&display=swap" rel="stylesheet">
 </head>
-<body>
+<body class="mainbody1">
 <div class="navbar1" id="main_nav">
 <div class="nav__data">
   <div class="nav_logo"></div>
@@ -144,9 +144,9 @@ crossorigin="anonymous"
       <div class="iconcontainer">
         <ul>
           <li><a href="sign_in.php">Home</a></li>
-        <li><a href="#" onclick="scroll_to_service()" >Services</a></li>
-            <li><a href="#" onclick="scroll_to_aboutus()">About Us</a></li>
-            <li><a href="#" onclick="scroll_to_contactus()">Contact Us</a></li>
+        <li><a class="naviconnew" onclick="scroll_to_service()" >Services</a></li>
+            <!-- <li><a class="naviconnew" onclick="scroll_to_aboutus()">About Us</a></li> -->
+            <li><a class="naviconnew" onclick="scroll_to_contactus()">Contact Us</a></li>
             <li><a href="sign_up.php">SignUp</a></li></ul>
         </div>
     </div>
@@ -174,7 +174,7 @@ crossorigin="anonymous"
     }
   
     ?>
-    <br><br>
+    <br>
     <div class="header_container">
       <div class="font_header_cont">
         <div class="tag_container">
@@ -189,7 +189,7 @@ crossorigin="anonymous"
       </div>
     <div class="container">
       <div class="wrapper">
-        <div class="title"><span>Login Form</span></div>
+        <div class="title"><span>Login</span></div>
         <form action="sign_in.php" class="login_form" method="POST" autocomplete="off">
           <div class="row">
             <i class="fas fa-user"></i>
@@ -208,15 +208,15 @@ crossorigin="anonymous"
 
 
           <div class="row button">
-            <input type="submit" value="Login">
+            <input type="submit" value="Log In">
           </div>
           <div class="signup-link">Not a member? <a href="sign_up.php">Signup now</a></div>
         </form>
       </div>
     </div>
 </div>
-<section>
-        <div class="service-container">
+<section id="service_section_content">
+        <div class="service-container" >
           <h3 class="service-title">Services</h3>
           <div class="row">
             <div class="col-md-4">
@@ -313,58 +313,25 @@ crossorigin="anonymous"
 
 <br>
 <br>
-<footer class="new_footer_area bg_color">
+<footer class="new_footer_area bg_color" id="footer_content">
         <div class="new_footer_top">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-3 col-md-6">
-                        <div class="f_widget company_widget wow fadeInLeft" data-wow-delay="0.2s">
-                            <h3 class="f-title f_600 t_color f_size_18">Get in Touch</h3>
-                            <p>Don’t miss any updates of our new templates and extensions.!</p>
-                            <form action="#" class="f_subscribe_two mailchimp" method="post" novalidate="true" _lpchecked="1">
-                                <input type="text" name="EMAIL" class="form-control memail" placeholder="Email">
-                                <button class="btn btn_get btn_get_two" type="submit">Subscribe</button>
-                                <p class="mchimp-errmessage" style="display: none;"></p>
-                                <p class="mchimp-sucmessage" style="display: none;"></p>
-                            </form>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6">
-                        <div class="f_widget about-widget pl_70 wow fadeInLeft" data-wow-delay="0.4s">
-                            <h3 class="f-title f_600 t_color f_size_18">Download</h3>
-                            <ul class="list-unstyled f_list">
-                                <li><a href="#">Company</a></li>
-                                <li><a href="#">Android App</a></li>
-                                <li><a href="#">iOS App</a></li>
-                                <li><a href="#">Desktop</a></li>
-                                <li><a href="#">Projects</a></li>
-                                <li><a href="#">My tasks</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6">
-                        <div class="f_widget about-widget pl_70 wow fadeInLeft" data-wow-delay="0.6s">
-                            <h3 class="f-title f_600 t_color f_size_18">Help</h3>
-                            <ul class="list-unstyled f_list">
-                                <li><a href="#">FAQ</a></li>
-                                <li><a href="#">Terms &amp; conditions</a></li>
-                                <li><a href="#">Reporting</a></li>
-                                <li><a href="#">Documentation</a></li>
-                                <li><a href="#">Support Policy</a></li>
-                                <li><a href="#">Privacy</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6">
-                        <div class="f_widget social-widget pl_70 wow fadeInLeft" data-wow-delay="0.8s">
-                            <h3 class="f-title f_600 t_color f_size_18">Team Solutions</h3>
-                            <div class="f_social_icon">
-                                <a href="#" class="fab fa-facebook"></a>
-                                <a href="#" class="fab fa-twitter"></a>
-                                <a href="#" class="fab fa-linkedin"></a>
-                                <a href="#" class="fab fa-pinterest"></a>
+            <div class="">
+                <div class="row1">
+                <div class="footer_content_main">
+    <p>&copy; 2024 FleetEIP. All rights reserved. Unauthorized use or reproduction of any content is strictly prohibited.</p>
+    <p><strong> Office Address:</strong>SF-B301,Roman Court,Near Parkar Mall,Kundli,Sonipat,Haryana 131023</p>
+    <p><strong>Contact Us:</strong> support@fleeteip.com</p>
+    <!-- <div class="social_line"><img src="facebook_logo.png" alt="Facebook" onclick="window.open('https://www.facebook.com/fleetEIP/', '_blank');" style="cursor: pointer;"><img src="linkedin.png"  alt="LinkedIn" onclick="window.open('https://www.linkedin.com/company/fleeteip/', '_blank');" style="cursor: pointer;"></div> -->
+    <div class="f_social_icon socials">
+    <a href="https://www.facebook.com/fleetEIP/" target="_blank" class="fab fa-facebook"></a>
+<a href="https://www.linkedin.com/company/fleeteip/" target="_blank" class="fab fa-linkedin"></a>
                             </div>
-                        </div>
+
+  </div>
+  
+
+                    
+                    <div class="col-lg-3 col-md-6">
                     </div>
                 </div>
             </div>

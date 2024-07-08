@@ -417,6 +417,7 @@ if($showAlertuser){
     <textarea type="text" placeholder="" name="sender_office_address" class="input02"><?php echo $row_companyaddress['company_address'] ;?></textarea>
     <label for="" class="placeholder2">Sender Office Address</label>
     </div>
+    <hr>
 <button class="quotation_submit" type="submit">SUBMIT</button>
 <br><br>
 
