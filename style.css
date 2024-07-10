@@ -855,11 +855,19 @@ width: 200px;
     /* text-align: center; */
 }
 .terms{
-    
+    margin-top: 290px;
     font-size: 12px;
     text-transform: capitalize;
     text-decoration: none;
     color: black;
+}
+.watermark{
+    width: 100%;
+    text-align: center;
+    opacity: 60%;
+}
+.secondrow_quotation{
+    border-top: 1px solid black;
 }
 .sign_in_a{
     text-decoration: none;
@@ -4381,7 +4389,7 @@ height: 30px;
     border: none;
 }
 .duration_th{
-    width: 50%; 
+    width: auto; 
     /* border: 1.3px solid black; */
 
 
@@ -4471,14 +4479,19 @@ height: 30px;
 }
 .sender_office_address{
     /* border: 2px solid red; */
-    width: 25%;
+    margin-top: 25px;
+    width: 100%;
     text-transform: capitalize;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 .bold_text{
     font-weight: 600;
     font-size: 15px;
 }
 .terms_condition{
+    
     font-size: 16px;
     width: 97%;
     border: none;

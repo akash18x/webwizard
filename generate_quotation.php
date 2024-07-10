@@ -4,6 +4,8 @@ include_once 'partials/_dbconnect.php';
 $showAlert = false;
 $showError = false;
 $showAlertuser=false;
+$uniqueId = uniqid();
+$quotenumber= '1';
 
 session_start();
 $companyname001 = $_SESSION['companyname'];
@@ -64,10 +66,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $newfleetmake=$_POST['newfleetmake'];
     $newfleetmodel=$_POST['newfleetmodel'];
     $fuel = $_POST['fuel_per_hour'];
-    $tentative = isset($_POST['tentative_date']) ? $_POST['tentative_date'] : "none";
-
+    $tentative = isset($_POST['tentative_date']) ? $_POST['tentative_date'] : null;
+    $shiftinfo=$_POST['shiftinfo'];
+    $engine_hour = !empty($_POST['engine_hour']) ? $_POST['engine_hour'] : null;
 
     $period=$_POST['contract_period_select'];
+    $uniqueidname=$_POST['uniqueidname'];
     $adv_pay=$_POST['advance_payment_select'];
     $crew=$_POST['operating_crew_select'];
     $room=$_POST['operator_room_scope_select'];
@@ -85,6 +89,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $force_clause=$_POST['force_clause'];
 
 $asset_code1 = isset($_POST['asset_code1']) ? $_POST['asset_code1'] : null;
+$sql_equip_specs1="SELECT * FROM `fleet1` where assetcode='$asset_code1' and companyname='$companyname001'";
+$result_spec1=mysqli_query($conn,$sql_equip_specs1);
+$row_specs1=mysqli_fetch_assoc($result_spec1);
+
+
+
+
 $avail1 = isset($_POST['avail1']) ? $_POST['avail1'] : null;
 $fleet_category1 = isset($_POST['fleet_category1']) ? $_POST['fleet_category1'] : null;
 $type1 = isset($_POST['type1']) ? $_POST['type1'] : null;
@@ -116,10 +127,10 @@ $fuelperltr2=$_POST['fuelperltr2'];
 
 
     if(!empty(($_POST['fleet_category'])) && !empty(($_POST['type']))){
-        $sql_insertion="INSERT INTO `quotation_generated` (`sender_office_address`,`tentative_date`,`contact_person_cell`,`yom`,`cap`,`cap_unit`,`boom`,`jib`,`luffing`,`availability`,`fuel/hour`,`make`,`model`,`sub_Type`,`quote_date`, `to_name`, `to_address`, `contact_person`, `email_id_contact_person`, 
+        $sql_insertion="INSERT INTO `quotation_generated` (`uniqueid`,`engine_hours`,`shift_info`,`sender_office_address`,`tentative_date`,`contact_person_cell`,`yom`,`cap`,`cap_unit`,`boom`,`jib`,`luffing`,`availability`,`fuel/hour`,`make`,`model`,`sub_Type`,`quote_date`, `to_name`, `to_address`, `contact_person`, `email_id_contact_person`, 
         `site_loc`, `asset_code`, `hours_duration`, `days_duration`, `sunday_included`, `rental_charges`, `mob_charges`, `demob_charges`,
          `crane_location`, `adblue`, `sender_name`, `sender_number`, `sender_contact`, `company_name`,`period_contract`, `adv_pay`, `crew`, `room`, `food`, `travel`, `brkdown`, `ot_pay`, `pay_terms`, `delay_pay`, `equipment_assembly`, `tpi`, `safety`, `tools`, `gst`, `force_clause`) 
-        VALUES ('$sender_office_address','$tentative','$contact_peson_cell','$yom_new_fleet','$new_fleet_cap','$newfleet_cap','$boomLength','$jibLength','$luffingLength','$availability','$fuel','$newfleetmake','$newfleetmodel','$type','$quote_date', '$to_name', '$to_address', '$contact_person_name', '$email_id', '$site_location', '$asset_code', '$hours_duration',
+        VALUES ('$engine_hour','$shiftinfo','$sender_office_address','$tentative','$contact_peson_cell','$yom_new_fleet','$new_fleet_cap','$newfleet_cap','$boomLength','$jibLength','$luffingLength','$availability','$fuel','$newfleetmake','$newfleetmodel','$type','$quote_date', '$to_name', '$to_address', '$contact_person_name', '$email_id', '$site_location', '$asset_code', '$hours_duration',
          '$days_duration', '$condition', '$rental_charges', '$mob_charges', '$demob_charges', '$location', '$adblue', '$sender', '" .$sender_name['mob_number'] ."', '" .$sender_name['email'] ."', '$companyname001','$period','$adv_pay','$crew','$room','$food','$travel','$brkdown','$ot_payment','$payment_terms_select','$delay_pay','$assembly','$tpi','$safety_security','$tools_tackels','$gst','$force_clause')";
          $result_insertion = mysqli_query($conn, $sql_insertion);
 
@@ -131,10 +142,10 @@ $fuelperltr2=$_POST['fuelperltr2'];
  
     }
 else{
-    $sql_insertion1="INSERT INTO `quotation_generated` (`sender_office_address`,`tentative_date`,`contact_person_cell`,`yom`,`cap`,`cap_unit`,`boom`,`jib`,`luffing`,`availability`,`fuel/hour`,`make`,`model`,`sub_Type`,`quote_date`, `to_name`, `to_address`, `contact_person`, `email_id_contact_person`, 
+    $sql_insertion1="INSERT INTO `quotation_generated` (`uniqueid`,`engine_hours`,`shift_info`,`sender_office_address`,`tentative_date`,`contact_person_cell`,`yom`,`cap`,`cap_unit`,`boom`,`jib`,`luffing`,`availability`,`fuel/hour`,`make`,`model`,`sub_Type`,`quote_date`, `to_name`, `to_address`, `contact_person`, `email_id_contact_person`, 
         `site_loc`, `asset_code`, `hours_duration`, `days_duration`, `sunday_included`, `rental_charges`, `mob_charges`, `demob_charges`,
          `crane_location`, `adblue`, `sender_name`, `sender_number`, `sender_contact`, `company_name`,`period_contract`, `adv_pay`, `crew`, `room`, `food`, `travel`, `brkdown`, `ot_pay`, `pay_terms`, `delay_pay`, `equipment_assembly`, `tpi`, `safety`, `tools`, `gst`, `force_clause`) 
-        VALUES ('$sender_office_address','$tentative','$contact_peson_cell','". $row_specs['yom'] . "','". $row_specs['capacity'] . "','". $row_specs['unit'] . "','". $row_specs['boom_length'] . "','". $row_specs['jib_length'] . "','". $row_specs['luffing_length'] . "','$availability','$fuel','". $row_specs['make'] . "','". $row_specs['model'] . "','". $row_specs['sub_type'] . "','$quote_date', '$to_name', '$to_address', '$contact_person_name', '$email_id', '$site_location', '$asset_code', '$hours_duration',
+        VALUES ('$uniqueidname','$engine_hour','$shiftinfo','$sender_office_address','$tentative','$contact_peson_cell','". $row_specs['yom'] . "','". $row_specs['capacity'] . "','". $row_specs['unit'] . "','". $row_specs['boom_length'] . "','". $row_specs['jib_length'] . "','". $row_specs['luffing_length'] . "','$availability','$fuel','". $row_specs['make'] . "','". $row_specs['model'] . "','". $row_specs['sub_type'] . "','$quote_date', '$to_name', '$to_address', '$contact_person_name', '$email_id', '$site_location', '$asset_code', '$hours_duration',
          '$days_duration', '$condition', '$rental_charges', '$mob_charges', '$demob_charges', '$location', '$adblue', '$sender', '" .$sender_name['mob_number'] ."', '" .$sender_name['email'] ."', '$companyname001','$period','$adv_pay','$crew','$room','$food','$travel','$brkdown','$ot_payment','$payment_terms_select','$delay_pay','$assembly','$tpi','$safety_security','$tools_tackels','$gst','$force_clause')";
 
         $result_insertion1= mysqli_query($conn, $sql_insertion1);
@@ -145,6 +156,35 @@ else{
             $showError = true;
         }
     }
+    if(!empty(($_POST['fleet_category1'])) && !empty(($_POST['type1']))){
+      $sql_second_vehicle="  INSERT INTO `second_vehicle_quotation`(`uniqueid`, `asset_code2`, `yom2`, `make2`, `model2`, `sub_type2`,
+         `fuel/hour2`, `availability2`, `tentative_date2`, `cap2`, `cap_unit2`, `boom2`, `jib2`, `luffing2`,
+           `rental_charges2`, `mob_charges2`, `demob_charges2`, `crane_location2`,`adblue2`) 
+          VALUES ('$uniqueidname','$asset_code1','$yom2','$newfleetmake1','$newfleetmodel1','$type1','$fuelperltr2',
+          '$avail1','$date_','$fleetcap2','$unit2','$boomLength2','$jibLength2','$luffingLength2',
+          '$rental2','$mob02','$demob02','$equiplocation02','$adblue2')";
+        $secondvehicleinsert=mysqli_query($conn,$sql_second_vehicle);
+        if ($secondvehicleinsert) {
+            $showAlert = true;
+        } else {
+            $showError = true;
+        }  
+   } 
+   elseif(isset($_POST['asset_code1'])){
+    $sql_second_vehicle2="  INSERT INTO `second_vehicle_quotation`(`uniqueid`, `asset_code2`, `yom2`, `make2`, `model2`, `sub_type2`,
+    `fuel/hour2`, `availability2`, `tentative_date2`, `cap2`, `cap_unit2`, `boom2`, `jib2`, `luffing2`,
+      `rental_charges2`, `mob_charges2`, `demob_charges2`, `crane_location2`,`adblue2`) 
+     VALUES ('$uniqueidname','$asset_code1','".$row_specs1['yom']."','".$row_specs1['make']."','".$row_specs1['model']."','".$row_specs1['sub_type']."','$fuelperltr2',
+     '$avail1','$date_','".$row_specs1['capacity']."','".$row_specs1['unit']."','".$row_specs1['boom_length']."','".$row_specs1['jib_length']."','".$row_specs1['luffing_length']."',
+     '$rental2','$mob02','$demob02','$equiplocation02','$adblue2')";
+   $secondvehicleinsert2=mysqli_query($conn,$sql_second_vehicle2);
+   if ($secondvehicleinsert2) {
+    $showAlert = true;
+} else {
+    $showError = true;
+}  
+
+   }
  }
 ?>
 <?php  
@@ -216,7 +256,7 @@ if($showAlertuser){
     <input type="checkbox" class="alertCheckbox" autocomplete="off" />
     <div class="alert notice">
       <span class="alertClose">X</span>
-      <span class="alertText">User Added SUccessfully!
+      <span class="alertText">User Added Successfully!
           <br class="clear"/></span>
     </div>
   </label>';
@@ -231,19 +271,7 @@ if($showAlertuser){
     <input type="date" placeholder="" name="quotation_date" class="input02" value="<?php echo date('Y-m-d'); ?>">
     <label for="" class="placeholder2"> Quotation Date</label>
 </div>
-<div class="trial1">
-        <h5>Sender Name Not In List ? <a href="quote_subuser.php">Add Team Members Here</a> </h5>
-    <select name="sender" id="sender" class="input02">
-    <option value="" disabled selected>Select Senders Name</option>
-    <?php
-    while ($row_sender_name = mysqli_fetch_assoc($result_sender_name)) {
-        echo '<option value="' . $row_sender_name['name'] . '">' . $row_sender_name['name'] . '</option>';
-    }
-    ?>
-</select>
-    </div>
-
-
+<input type="text" value=" <?php echo $uniqueId ?>" name="uniqueidname" readonly hidden>
         <div class="outer02">
 
         <div class="trial1">
@@ -418,8 +446,8 @@ if($showAlertuser){
         </div>
 
     </div>
-        <div class="trial1" id="date_of_availability" name="tentative_date">
-            <input type="date" placeholder="" class="input02">
+        <div class="trial1" id="date_of_availability" >
+            <input type="date" placeholder="" class="input02" name="tentative_date">
             <label for="" class="placeholder2">Tentative Date Of Availability</label>
         </div>
         <div class="trial1">
@@ -435,9 +463,17 @@ if($showAlertuser){
             <label class="placeholder2" for="">Shift Duration In Hours</label>
         </div>
         <div class="trial1" id="othershift_enginehour">
-            <input type="text" class="input02" name="" placeholder="" >
-            <label class="placeholder2" for="">Engine Hours</label>
-        </div>
+        <select name="engine_hour" id="" class="input02">
+            <option value=""disabled selected>Engine Hours</option>
+            <option value="260 Engine">260 Engine Hours</option>
+            <option value="280 Engine">280 Engine Hours</option>
+            <option value="300 Engine">300 Engine Hours</option>
+            <option value="312 Engine">312 Engine Hours</option>
+            <option value="416 Engine">412 Engine Hours</option>
+            <option value="572 Engine">572 Engine Hours</option>
+            <option value="624 Engine">624 Engine Hours</option>
+        </select>
+    </div>
 
         <div class="outer02">
         <div class="trial1">
@@ -484,6 +520,18 @@ if($showAlertuser){
             <label for="" class="placeholder2">Fuel in ltrs Per Hour</label>
         </div>
         </div>
+        <div class="trial1">
+        <h5>Sender Name Not In List ? <a href="quote_subuser.php">Add Team Members Here</a> </h5>
+    <select name="sender" id="sender" class="input02">
+    <option value="" disabled selected>Select Senders Name</option>
+    <?php
+    while ($row_sender_name = mysqli_fetch_assoc($result_sender_name)) {
+        echo '<option value="' . $row_sender_name['name'] . '">' . $row_sender_name['name'] . '</option>';
+    }
+    ?>
+</select>
+    </div>
+
     <div class="trial1">
     <textarea type="text" placeholder="" name="sender_office_address" class="input02"><?php echo $row_companyaddress['company_address'] ;?></textarea>
     <label for="" class="placeholder2">Sender Office Address</label>
@@ -494,7 +542,7 @@ if($showAlertuser){
         <p>Add Second Equipment Details</p>
     <div class="outer02 mt-10px" >
         <div class="trial1">
-        <select name="" name="asset_code1" class="input02" onchange="choose_new_equ2()" id="choose_Ac2">
+        <select  name="asset_code1" class="input02" onchange="choose_new_equ2()" id="choose_Ac2">
             <option value="" disabled selected>Choose Asset Code</option>
             <option value="New Equipment">Choose New Equipment</option>
     <?php
