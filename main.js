@@ -851,3 +851,83 @@ function shift_hour() {
         othershift_enginehour.style.display = 'none';
     }
 }
+function other_quotation(){
+    document.getElementById("new_out1").style.display='block'
+    document.getElementById("second_addequipbtn").style.display='none'
+    document.getElementById("new_out1").style.display='flex'
+    document.getElementById("new_out1").style.flexDirection='column'
+    document.getElementById("new_out1").style.alignItems='center'
+}
+function addanother_equip(){
+    document.getElementById("new_out2").style.display='block'
+    document.getElementById("lastaddequipbtn").style.display='none'
+    document.getElementById("new_out2").style.display='flex'
+    document.getElementById("new_out2").style.flexDirection='column'
+    document.getElementById("new_out2").style.alignItems='center'
+}
+function quoteforthirdvehicle(){
+    const ac_dd3=document.getElementById("choose_Ac3");
+    const new_equip3=document.getElementById("new_equip3");
+    const newfleet_makemodel3=document.getElementById("newfleet_makemodel3");
+    const newfleet_capinfo3=document.getElementById("newfleet_capinfo3");
+    const newfleet_jib3=document.getElementById("newfleet_jib3");
+    if(ac_dd3.value==="New Equipment"){
+        new_equip3.style.display = "block"; // Set display to block initially
+        new_equip3.style.display = "flex"; // Change to flex after initial display
+        new_equip3.style.alignItems = "center";
+        newfleet_makemodel3.style.display="block";
+        newfleet_makemodel3.style.display="flex";
+        newfleet_makemodel3.style.alignItems="center";
+
+        newfleet_capinfo3.style.display="block";
+        newfleet_capinfo3.style.display="flex";
+        newfleet_capinfo3.style.alignItems="center";
+
+        newfleet_jib3.style.display="block";
+        newfleet_jib3.style.display="flex";
+        newfleet_jib3.style.alignItems="center";
+
+    }
+    else{
+        new_equip3.style.display="none";
+        newfleet_makemodel3.style.display="none";
+        newfleet_capinfo3.style.display="none";
+        newfleet_jib3.style.display="none";
+    }
+}
+function not_immediate3(){
+    const availability_dd3=document.getElementById("availability_dd3");
+    const date_of_availability3=document.getElementById("date_of_availability3");
+    if(availability_dd3.value==="Not Immediate"){
+       date_of_availability3.style.display="block"
+    }
+    else{
+       date_of_availability3.style.display="none";
+    }
+       }
+   
+function not_immediate2(){
+    const availability_dd2=document.getElementById("availability_dd2");
+    const date_of_availability2=document.getElementById("date_of_availability2");
+    if(availability_dd2.value==="Not Immediate"){
+       date_of_availability2.style.display="block"
+    }
+    else{
+       date_of_availability2.style.display="none";
+    }
+       }
+
+   function choose_new_equ2(){
+    const choose_Ac2=document.getElementById("choose_Ac2");
+    const newequipdet1=document.getElementById("newequipdet1");
+    if (choose_Ac2.value==='New Equipment'){
+        newequipdet1.style.display='block';
+        newequipdet1.style.display='flex';
+        newequipdet1.style.flexDirection='column';
+        newequipdet1.style.alignItems='center';
+    }
+    else{
+        newequipdet1.style.display='none';
+ 
+    }
+   }

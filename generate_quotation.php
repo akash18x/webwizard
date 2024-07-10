@@ -11,6 +11,12 @@ $companyname001 = $_SESSION['companyname'];
 $asset_code_selection = "SELECT * FROM `fleet1` WHERE `companyname`='$companyname001'";
 $result_asset_code = mysqli_query($conn, $asset_code_selection);
 
+$asset_code_selection1 = "SELECT * FROM `fleet1` WHERE `companyname`='$companyname001'";
+$result_asset_code1 = mysqli_query($conn, $asset_code_selection1);
+
+$asset_code_selection2 = "SELECT * FROM `fleet1` WHERE `companyname`='$companyname001'";
+$result_asset_code2 = mysqli_query($conn, $asset_code_selection2);
+
 
 $sql_sender_name="SELECT * FROM `team_members` where company_name='$companyname001'";
 $result_sender_name=mysqli_query($conn,$sql_sender_name);
@@ -78,6 +84,37 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $gst=$_POST['gst'];
     $force_clause=$_POST['force_clause'];
 
+$asset_code1 = isset($_POST['asset_code1']) ? $_POST['asset_code1'] : null;
+$avail1 = isset($_POST['avail1']) ? $_POST['avail1'] : null;
+$fleet_category1 = isset($_POST['fleet_category1']) ? $_POST['fleet_category1'] : null;
+$type1 = isset($_POST['type1']) ? $_POST['type1'] : null;
+$newfleetmake1=$_POST['newfleetmake1'];
+$newfleetmodel1=$_POST['newfleetmodel1'];
+$fleetcap2=$_POST['fleetcap2'];
+$unit2 = isset($_POST['unit2']) ? $_POST['unit2'] : null;
+$yom2=$_POST['yom2'];
+$boomLength2=$_POST['boomLength2'];
+$jibLength2=$_POST['jibLength2'];
+$luffingLength2=$_POST['luffingLength2'];
+$date_ = isset($_POST['date_']) ? $_POST['date_'] : null;
+$rental2=$_POST['rental2'];
+$mob02=$_POST['mob02'];
+$demob02=$_POST['demob02'];
+$equiplocation02=$_POST['equiplocation02'];
+$adblue2 = isset($_POST['adblue2']) ? $_POST['adblue2'] : null;
+$fuelperltr2=$_POST['fuelperltr2'];
+
+
+
+
+
+
+
+
+
+
+
+
     if(!empty(($_POST['fleet_category'])) && !empty(($_POST['type']))){
         $sql_insertion="INSERT INTO `quotation_generated` (`sender_office_address`,`tentative_date`,`contact_person_cell`,`yom`,`cap`,`cap_unit`,`boom`,`jib`,`luffing`,`availability`,`fuel/hour`,`make`,`model`,`sub_Type`,`quote_date`, `to_name`, `to_address`, `contact_person`, `email_id_contact_person`, 
         `site_loc`, `asset_code`, `hours_duration`, `days_duration`, `sunday_included`, `rental_charges`, `mob_charges`, `demob_charges`,
@@ -137,7 +174,10 @@ if(isset($_SESSION['user_added'])){
     <link rel="stylesheet" href="style.css">
     <script src="main.js"></script>
     <title>Generate Quotation</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+
     <style><?php include "style.css" ?></style>
+    <script><?php include "main.js" ?></script>
 </head>
 <body>
 <div class="navbar1">
@@ -236,11 +276,11 @@ if($showAlertuser){
         </div>
         <div class="outer02">
         <div class="trial1">
-        <select name="asset_code" name="asset_code" class="input02" onchange="choose_new_equ()" id="choose_Ac">
+        <select name="asset_code" name="" class="input02" onchange="choose_new_equ()" id="choose_Ac">
             <option value="" disabled selected>Choose Asset Code</option>
             <option value="New Equipment">Choose New Equipment</option>
     <?php
-        while ($row_asset_code = mysqli_fetch_assoc($result_asset_code)) {
+        while ($row_asset_code = mysqli_fetch_assoc($result_asset_code1)) {
             echo '<option value="' . $row_asset_code['assetcode'] . '">' . $row_asset_code['assetcode'] . " (" . $row_asset_code['sub_type'] . " " . $row_asset_code['make'] . " " . $row_asset_code['model'] . ")" . '</option>';
         }
     ?>
@@ -317,9 +357,9 @@ if($showAlertuser){
             <option id="mhe_option14" class="mhe_options" value="Terrain Mobile Crane">Terrain Mobile Crane</option>
             <option id="mhe_option15" class="mhe_options" value="Self Loading Truck Crane">Self Loading Truck Crane</option>
 
-            <option id="ground_engineering_equipment_option1" class="gee_options" value="Hydraulic Drilling Rig">Hydraulic Drilling Rig</option>
-            <option id="ground_engineering_equipment_option2" class="gee_options" value="Rotary Drilling Rig">Rotary Drilling Rig</option>
-            <option id="ground_engineering_equipment_option3" class="gee_options" value="Vibro Hammer">Vibro Hammer</option>
+            <option id="ground_engineering_equipment_option" class="gee_options1" value="Hydraulic Drilling Rig">Hydraulic Drilling Rig</option>
+            <option id="ground_engineering_equipment_option" class="gee_options1" value="Rotary Drilling Rig">Rotary Drilling Rig</option>
+            <option id="ground_engineering_equipment_option" class="gee_options1" value="Vibro Hammer">Vibro Hammer</option>
             <option  id="trailor_option1" class="trailor_options" value="Dumper">Dumper</option>
             <option  id="trailor_option2" class="trailor_options" value="Truck">Truck</option>
             <option  id="trailor_option3" class="trailor_options" value="Water Tanker">Water Tanker</option>
@@ -327,9 +367,9 @@ if($showAlertuser){
             <option id="trailor_option5"  class="trailor_options" value="Semi Low Bed">Semi Low Bed</option>
             <option  id="trailor_option6" class="trailor_options" value="Flatbed">Flatbed</option>
             <option  id="trailor_option7" class="trailor_options" value="Hydraulic Axle">Hydraulic Axle</option>
-            <option id="generator_option1" class="generator_options" value="Silent Diesel Generator">Silent Diesel Generator</option>
-            <option id="generator_option2" class="generator_options" value="Mobile Light Tower">Mobile Light Tower</option>
-            <option id="generator_option3" class="generator_options" value="Diesel Generator">Diesel Generator</option>
+            <option id="generator_option" class="generator_options" value="Silent Diesel Generator">Silent Diesel Generator</option>
+            <option id="generator_option" class="generator_options" value="Mobile Light Tower">Mobile Light Tower</option>
+            <option id="generator_option" class="generator_options" value="Diesel Generator">Diesel Generator</option>
         </select>
 
         </div>
@@ -415,7 +455,7 @@ if($showAlertuser){
         <div class="outer02">
         <div class="trial1">
             <input type="text" name="rental_charges" placeholder="" class="input02">
-            <label for="" class="placeholder2">Rental Charges Per Month</label>
+            <label for="" class="placeholder2">Rental Charges </label>
         </div>
         <div class="trial1">
             <input type="text" name="mob_charges" placeholder="" class="input02">
@@ -448,6 +488,200 @@ if($showAlertuser){
     <textarea type="text" placeholder="" name="sender_office_address" class="input02"><?php echo $row_companyaddress['company_address'] ;?></textarea>
     <label for="" class="placeholder2">Sender Office Address</label>
     </div>
+    <div class="addbuttonicon" id="second_addequipbtn"><i onclick="other_quotation()"  class="bi bi-plus-circle"></i><p>Add Another Equipment</p></div>
+    <div class="otherquipquote" id="new_out1">
+        <br>
+        <p>Add Second Equipment Details</p>
+    <div class="outer02 mt-10px" >
+        <div class="trial1">
+        <select name="" name="asset_code1" class="input02" onchange="choose_new_equ2()" id="choose_Ac2">
+            <option value="" disabled selected>Choose Asset Code</option>
+            <option value="New Equipment">Choose New Equipment</option>
+    <?php
+        while ($row_asset_code2 = mysqli_fetch_assoc($result_asset_code)) {
+            echo '<option value="' . $row_asset_code2['assetcode'] . '">' . $row_asset_code2['assetcode'] . " (" . $row_asset_code2['sub_type'] . " " . $row_asset_code2['make'] . " " . $row_asset_code2['model'] . ")" . '</option>';
+        }
+    ?>
+        </select>
+        </div>
+        <div class="trial1">
+            <select name="avail1" id="availability_dd2" class="input02" onchange="not_immediate2()">
+                <option value=""disabled selected>Availability</option>
+                <option value="Immediate">Immediate</option>
+                <option value="Not Immediate">Select A Date</option>
+            </select>
+        </div>
+        </div>
+        <div class="newequip_details1" id="newequipdet1">
+        <div class="outer02" id="" >
+        <div class="trial1">
+        <select class="input02" name="fleet_category1" id="oem_fleet_type1" onchange="seco_equip()" >
+            <option value="" disabled selected>Select Fleet Category</option>
+            <option value="Aerial Work Platform">Aerial Work Platform</option>
+            <option value="Concrete Equipment">Concrete Equipment</option>
+            <option value="EarthMovers and Road Equipments">EarthMovers and Road Equipments</option>
+            <!-- <option value="aerial_work_platform">Aerial Work Platform</option> -->
+            <option value="Material Handling Equipments">Material Handling Equipments</option>
+            <option value="Ground Engineering Equipments">Ground Engineering Equipments</option>
+            <option value="Trailor and Truck">Trailor and Truck</option>
+            <option value="Generator and Lighting">Generator and Lighting</option>
+        </select>
+
+        </div>
+        <div class="trial1">
+        <select class="input02" name="type1" id="fleet_sub_type1" >
+            <option value="" disabled selected>Select Fleet Type</option>
+            <option value="Self Propelled Articulated Boomlift"class="awp_options1"  id="aerial_work_platform_option1">Self Propelled Articulated Boomlift</option>
+            <option value="Scissor Lift Diesel" class="awp_options1" id="aerial_work_platform_option2">Scissor Lift Diesel</option>
+            <option value="Scissor Lift Electric"class="awp_options1"  id="aerial_work_platform_option3">Scissor Lift Electric</option>
+            <option value="Spider Lift"class="awp_options1"  id="aerial_work_platform_option4">Spider Lift</option>
+            <option value="Self Propelled Straight Boomlift"class="awp_options1"  id="aerial_work_platform_option5">Self Propelled Straight Boomlift</option>
+            <option value="Truck Mounted Articulated Boomlift"class="awp_options1"  id="aerial_work_platform_option6">Truck Mounted Articulated Boomlift</option>
+            <option value="Truck Mounted Straight Boomlift"class="awp_options1"  id="aerial_work_platform_option7">Truck Mounted Straight Boomlift</option>
+            <option value="Batching Plant"class="cq_options1" id="concrete_equipment_option1">Batching Plant</option>
+            <option value="Concrete Boom Placer"class="cq_options1" id="concrete_equipment_option2">Concrete Boom Placer</option>
+            <option value="Concrete Pump"class="cq_options1" id="concrete_equipment_option3">Concrete Pump</option>
+            <option value="Moli Pump"class="cq_options1" id="concrete_equipment_option4">Moli Pump</option>
+            <option value="Mobile Batching Plant"class="cq_options1" id="concrete_equipment_option5">Mobile Batching Plant</option>
+            <option value="Static Boom Placer"class="cq_options1" id="concrete_equipment_option6">Static Boom Placer</option>
+            <option value="Transit Mixer"class="cq_options1" id="concrete_equipment_option7">Transit Mixer</option>
+            <option value="Baby Roller" class="earthmover_options1" id="earthmovers_option1">Baby Roller</option>
+            <option value="Backhoe Loader" class="earthmover_options1" id="earthmovers_option2">Backhoe Loader</option>
+            <option value="Bulldozer" class="earthmover_options1" id="earthmovers_option3">Bulldozer</option>
+            <option value="Excavator" class="earthmover_options1" id="earthmovers_option4">Excavator</option>
+            <option value="Milling Machine" class="earthmover_options1" id="earthmovers_option5">Milling Machine</option>
+            <option value="Motor Grader" class="earthmover_options1" id="earthmovers_option6">Motor Grader</option>
+            <option value="Pneumatic Tyre Roller" class="earthmover_options1" id="earthmovers_option7">Pneumatic Tyre Roller</option>
+            <option value="Single Drum Roller" class="earthmover_options1" id="earthmovers_option8">Single Drum Roller</option>
+            <option value="Skid Loader" class="earthmover_options1" id="earthmovers_option9">Skid Loader</option>
+            <option value="Slip Form Paver" class="earthmover_options1" id="earthmovers_option10">Slip Form Paver</option>
+            <option value="Soil Compactor" class="earthmover_options1" id="earthmovers_option11">Soil Compactor</option>
+            <option value="Tandem Roller" class="earthmover_options1" id="earthmovers_option12">Tandem Roller</option>
+            <option value="Vibratory Roller" class="earthmover_options1" id="earthmovers_option13">Vibratory Roller</option>
+            <option value="Wheeled Excavator" class="earthmover_options1" id="earthmovers_option14">Wheeled Excavator</option>
+            <option value="Wheeled Loader" class="earthmover_options1" id="earthmovers_option15">Wheeled Loader</option>
+            <option id="mhe_option1"  class="mhe_options1" value="Fixed Tower Crane">Fixed Tower Crane</option>
+            <option id="mhe_option2" class="mhe_options1" value="Fork Lift Diesel">Fork Lift Diesel</option>
+            <option id="mhe_option3" class="mhe_options1" value="Fork Lift Electric">Fork Lift Electric</option>
+            <option id="mhe_option4" class="mhe_options1" value="Hammerhead Tower Crane">Hammerhead Tower Crane</option>
+            <option id="mhe_option5" class="mhe_options1" value="Hydraulic Crawler Crane">Hydraulic Crawler Crane</option>
+            <option id="mhe_option6" class="mhe_options1" value="Luffing Jib Tower Crane">Luffing Jib Tower Crane</option>
+            <option id="mhe_option7" class="mhe_options1" value="Mechanical Crawler Crane">Mechanical Crawler Crane</option>
+            <option id="mhe_option8" class="mhe_options1" value="Pick and Carry Crane">Pick and Carry Crane</option>
+            <option id="mhe_option9" class="mhe_options1" value="Reach Stacker">Reach Stacker</option>
+            <option id="mhe_option10" class="mhe_options1" value="Rough Terrain Crane">Rough Terrain Crane</option>
+            <option id="mhe_option11" class="mhe_options1" value="Telehandler">Telehandler</option>
+            <option id="mhe_option12" class="mhe_options1" value="Telescopic Crawler Crane">Telescopic Crawler Crane</option>
+            <option id="mhe_option13" class="mhe_options1" value="Telescopic Mobile Crane">Telescopic Mobile Crane</option>
+            <option id="mhe_option14" class="mhe_options1" value="Terrain Mobile Crane">Terrain Mobile Crane</option>
+            <option id="mhe_option15" class="mhe_options1" value="Self Loading Truck Crane">Self Loading Truck Crane</option>
+
+            <option id="ground_engineering_equipment_option1" class="gee_options1" value="Hydraulic Drilling Rig">Hydraulic Drilling Rig</option>
+            <option id="ground_engineering_equipment_option2" class="gee_options1" value="Rotary Drilling Rig">Rotary Drilling Rig</option>
+            <option id="ground_engineering_equipment_option3" class="gee_options1" value="Vibro Hammer">Vibro Hammer</option>
+            <option  id="trailor_option1" class="trailor_options1" value="Dumper">Dumper</option>
+            <option  id="trailor_option2" class="trailor_options1" value="Truck">Truck</option>
+            <option  id="trailor_option3" class="trailor_options1" value="Water Tanker">Water Tanker</option>
+            <option id="trailor_option4"  class="trailor_options1" value="Low Bed">Low Bed</option>
+            <option id="trailor_option5"  class="trailor_options1" value="Semi Low Bed">Semi Low Bed</option>
+            <option  id="trailor_option6" class="trailor_options1" value="Flatbed">Flatbed</option>
+            <option  id="trailor_option7" class="trailor_options1" value="Hydraulic Axle">Hydraulic Axle</option>
+            <option id="generator_option1" class="generator_options" value="Silent Diesel Generator">Silent Diesel Generator</option>
+            <option id="generator_option2" class="generator_options" value="Mobile Light Tower">Mobile Light Tower</option>
+            <option id="generator_option3" class="generator_options" value="Diesel Generator">Diesel Generator</option>
+        </select>
+
+        </div>
+    </div>
+    <div class="outer02" id="">
+        <div class="trial1">
+            <input type="text" placeholder="" name="newfleetmake1" class="input02">
+            <label for="" class="placeholder2">Fleet Make</label>
+        </div>
+        <div class="trial1">
+            <input type="text" placeholder="" name="newfleetmodel1" class="input02">
+            <label for="" class="placeholder2">Fleet Model</label>
+        </div>
+
+    </div>
+    <div class="outer02" id="">
+        <div class="trial1">
+            <input type="text" placeholder="" name="fleetcap2" class="input02">
+            <label for="" class="placeholder2">Fleet Capacity</label>
+        </div>
+        <div class="trial1" id="newfleet_unit">
+            <select name="unit2" id="" class="input02">
+                <option value=""disabled selected>Unit</option>
+                <option value="Ton">Ton</option>
+                <option value="Meter">Meter</option>
+                <option value="m^3">M³</option>
+            </select>
+        </div>
+        <div class="trial1">
+            <input type="number" placeholder="" name="yom2" class="input02" min="1900" max="2099">
+            <label for="" class="placeholder2">YOM</label>
+        </div>
+    </div>
+    <div class="outer02" id="">
+    <div class="trial1" >
+            <input type="text" name="boomLength2"  placeholder="" class=" input02" >
+            <label class="placeholder2">Boom Length</label>
+        </div>    
+        <div class="trial1" >
+            <input type="text" name="jibLength2"  placeholder="" class="input02 " >
+            <label class="placeholder2">Jib Length</label>
+        </div>
+        <div class="trial1">
+            <input type="text" name="luffingLength2"  placeholder="" class=" input02" >
+            <label class="placeholder2">Luffing Length</label>
+        </div>
+    </div>
+
+    </div>
+        <div class="trial1" id="date_of_availability2" >
+            <input type="date" placeholder="" name="date_" class="input02">
+            <label for="" class="placeholder2">Tentative Date Of Availability</label>
+        </div>
+        <div class="outer02">
+        <div class="trial1">
+            <input type="text" name="rental2" placeholder="" class="input02">
+            <label for="" class="placeholder2">Rental Charges </label>
+        </div>
+        <div class="trial1">
+            <input type="text" name="mob02" placeholder="" class="input02">
+            <label for="" class="placeholder2">Mob Charges </label>
+        </div>
+        <div class="trial1">
+            <input type="text" name="demob02" placeholder="" class="input02">
+            <label for="" class="placeholder2">Demob Charges </label>
+        </div>
+        </div>
+        <div class="outer02">
+        <div class="trial1">
+            <input type="text" name="equiplocation02" placeholder="" class="input02">
+            <label for="" class="placeholder2"> Equipment Location </label>
+ 
+        </div>
+        <div class="trial1">
+            <select name="adblue2" id="" class="input02">
+                <option value=""disabled selected>Adblue?</option>
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
+            </select>
+        </div>
+        <div class="trial1">
+            <input type="text" placeholder="" name="fuelperltr2" class="input02">
+            <label for="" class="placeholder2">Fuel in ltrs Per Hour</label>
+        </div>
+        </div>
+        <!-- <div class="addbuttonicon" id="lastaddequipbtn"><i onclick="addanother_equip()"  class="bi bi-plus-circle"></i><p>Add Another Equipment</p></div> -->
+        </div>
+
+
+
+
+    
+    
     <div class="terms_container012">
     <p class="heading_terms">Terms & Conditions :
 
@@ -472,8 +706,8 @@ if($showAlertuser){
     <strong>Advance Payment :</strong> 
     <select name="advance_payment_select" id="advance_payment_select">
         <option value="NA">Not Applicable</option>
-        <option value="Mobilization + Rental Charges">Applicable - Mobilization + Rental Charges</option>
-        <option value="Mob+Demob+Rental">Applicable - Mobilization + Rental Charges + Demobilization Charges</option>
+        <option value="Applicable - Mobilization + Rental Charges">Applicable - Mobilization + Rental Charges</option>
+        <option value="Applicable - Mobilization + Rental Charges + Demobilization Charges">Applicable - Mobilization + Rental Charges + Demobilization Charges</option>
     </select>
 </p>
 
@@ -500,8 +734,8 @@ if($showAlertuser){
     <strong>Crew Food Scope :</strong>  
     <select name="crew_food_scope_select" id="crew_food_scope_select">
         <option value="NA">Not Applicable</option>
-        <option value="Client Scope">In Client Scope</option>
-        <option value="Rental Company Scope">In Rental Company Scope</option>
+        <option value="In Client Scope">In Client Scope</option>
+        <option value="In Rental Company Scope">In Rental Company Scope</option>
     </select>
 </p>
 
@@ -509,8 +743,8 @@ if($showAlertuser){
     <strong>Crew Travelling :</strong>  
     <select name="crew_travelling_select" id="crew_travelling_select">
         <option value="NA">Not Applicable</option>
-        <option value="Client Scope">In Client Scope</option>
-        <option value="Rental Company Scope">In Rental Company Scope</option>
+        <option value="In Client Scope">In Client Scope</option>
+        <option value="In Rental Company Scope">In Rental Company Scope</option>
     </select>
 </p>
 
@@ -527,10 +761,10 @@ if($showAlertuser){
 <p class="terms_condition">
     <strong>Payment Terms :</strong> 
     <select name="payment_terms_select" id="payment_terms_select">
-        <option value="7 Days">Within 7 Days Of invoice submission</option>
-        <option value="10 Days">Within 10 Days Of invoice submission</option>
-        <option value="30 Days">Within 30 Days Of invoice submission</option>
-        <option value="45 Days">Within 45 Days Of invoice submission</option>
+        <option value="Within 7 Days Of invoice submission">Within 7 Days Of invoice submission</option>
+        <option value="Within 10 Days Of invoice submission">Within 10 Days Of invoice submission</option>
+        <option value="Within 30 Days Of invoice submission">Within 30 Days Of invoice submission</option>
+        <option value="Within 45 Days Of invoice submission">Within 45 Days Of invoice submission</option>
     </select>
 </p>
 
@@ -549,7 +783,7 @@ if($showAlertuser){
 <p class="terms_condition">
     <strong>TPI Scope :</strong> 
     <select name="tpi_scope_select" id="tpi_scope_select">
-        <option value="">Not Required</option>
+        <option value="Not Required">Not Required</option>
         <option value="In Client Scope">In Client Scope</option>
         <option value="In Rental Company">In Rental Company</option>
     </select>
@@ -558,7 +792,7 @@ if($showAlertuser){
 <p class="terms_condition">
     <strong>Safety And Security :</strong> 
     <select name="safety_security_select" id="safety_security_select">
-        <option value="">Not Required</option>
+        <option value="Not Required">Not Required</option>
         <option value="In Client Scope">In Client Scope</option>
         <option value="In Rental Company">In Rental Company</option>
     </select>
@@ -649,6 +883,44 @@ if($showAlertuser){
 
     const displayStyle6 = (first_select.value === "Generator and Lighting") ? "block" : "none";
     Array.from(options6).forEach(option => option.style.display = displayStyle6);
+
+
+}
+
+
+
+function seco_equip() {
+    const options1 = document.getElementsByClassName('awp_options1');
+    const options11 = document.getElementsByClassName('cq_options1');
+    const options21 = document.getElementsByClassName('earthmover_options1');
+    const options31 = document.getElementsByClassName('mhe_options1');
+    const options41 = document.getElementsByClassName('gee_options1');
+    const options51 = document.getElementsByClassName('trailor_options1');
+    const options61 = document.getElementsByClassName('generator_options1');
+
+    const first_select1 = document.getElementById('oem_fleet_type1');
+
+    // Set the display style for all elements at once
+    const displayStyle00 = (first_select1.value === "Aerial Work Platform") ? "block" : "none";
+    Array.from(options1).forEach(option => option.style.display = displayStyle00);
+
+    const displayStyle1 = (first_select1.value === "Concrete Equipment") ? "block" : "none";
+    Array.from(options11).forEach(option => option.style.display = displayStyle1);
+
+    const displayStyle2 = (first_select1.value === "EarthMovers and Road Equipments") ? "block" : "none";
+    Array.from(options21).forEach(option => option.style.display = displayStyle2);
+
+    const displayStyle3 = (first_select1.value === "Material Handling Equipments") ? "block" : "none";
+    Array.from(options31).forEach(option => option.style.display = displayStyle3);
+
+    const displayStyle4 = (first_select1.value === "Ground Engineering Equipments") ? "block" : "none";
+    Array.from(options41).forEach(option => option.style.display = displayStyle4);
+
+    const displayStyle5 = (first_select1.value === "Trailor and Truck") ? "block" : "none";
+    Array.from(options51).forEach(option => option.style.display = displayStyle5);
+
+    const displayStyle6 = (first_select1.value === "Generator and Lighting") ? "block" : "none";
+    Array.from(options61).forEach(option => option.style.display = displayStyle6);
 
 
 }

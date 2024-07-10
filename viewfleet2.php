@@ -198,7 +198,7 @@ if($showAlert_addfleet){
   
 ?>
 <div class="add_fleet_btn_new">
-<button class="customButton" onclick="addfleetnew()">
+<button class="customButton view_fleet_addbtn" onclick="addfleetnew()">
   <div class="customSvgWrapper-1">
     <div class="customSvgWrapper">
       <svg

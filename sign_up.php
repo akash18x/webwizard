@@ -101,7 +101,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['upl_gst'])) {
             border: 1px solid #e0e0e0;
         }
         .header {
-            background-color: #C1121F;
+            background-color: #4067B5;
             color: white;
             padding: 15px;
             border-radius: 8px 8px 0 0;
@@ -119,7 +119,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['upl_gst'])) {
         }
         .content h2 {
             font-size: 28px;
-            color: #C1121F;
+            color: #4067B5;
             text-align: center;
             margin: 20px 0;
         }

@@ -71,14 +71,14 @@ if(isset($_POST['change-password'])){
             font-size: 15px;
         }
         .container .form .button {
-            background: #C1121F;
+            background: #4067B5;
             color: #fff;
             font-size: 17px;
             font-weight: 500;
             transition: all 0.3s ease;
         }
         .container .form .button:hover {
-            background: #C1121F;
+            background: #4067B5;
         }
         .container .form .link {
             padding: 5px 0;

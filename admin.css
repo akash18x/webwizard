@@ -14,7 +14,7 @@
 
 :root{
     /* ===== Colors ===== */
-    --primary-color: #C1121F;
+    --primary-color: #B4C5E4;
     --panel-color: #FFF;
     --text-color: #000;
     --black-light-color: #707070;
@@ -69,7 +69,7 @@ body.dark{
 } */
 
 .cardscont{
-    background-color: #b4c5e4!important;
+    background-color: #B4C5E4!important;
     border-bottom-left-radius: 8px;
     border-bottom-right-radius: 8px;
 }
@@ -183,11 +183,11 @@ nav.close li a .link-name{
 }
 .nav-links li a:hover i,
 .nav-links li a:hover .link-name{
-    color: #C1121F;
+    color: #4067B5;
 }
 body.dark .nav-links li a:hover i,
 body.dark .nav-links li a:hover .link-name{
-    color: #C1121F;
+    color: #4067B5;
 }
 .menu-items .logout-mode{
     padding-top: 10px;
@@ -304,13 +304,13 @@ nav.close ~ .dashboard .top{
     padding-top: 50px;
 }
 .link-name:hover{
-color: #C1121F;
+color: #B4C5E4;
 }
 .dash-content .title{
 
     display: flex;
     align-items: center;
-    background-color: #b4c5e4!important;
+    background-color: #B4C5E4!important;
     border-top-left-radius: 8px;
     border-top-right-radius: 8px;
     margin: 60px 0 20px 0 ;

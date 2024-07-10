@@ -99,73 +99,32 @@ $row=mysqli_fetch_assoc($result);
 
 
 <p class="terms_condition">
-    <strong>Period Of Contract :</strong> Minimum Order Shall Be 
-    <select name="contract_period_select" id="contract_period_select">
-        <option value="1">1 Month</option>
-        <option value="2">2 Months</option>
-        <option value="3">3 Months</option>
-        <option value="6">6 Months</option>
-        <option value="9">9 Months</option>
-        <option value="12">12 Months</option>
-        <option value="18">18 Months</option>
-        <option value="24">24 Months</option>
-    </select>
+    <strong>Period Of Contract :</strong> Minimum Order Shall Be <?php echo $row['period_contract'] ?> 
 </p>
 
 <p class="terms_condition">
-    <strong>Advance Payment :</strong> 
-    <select name="advance_payment_select" id="advance_payment_select">
-        <option value="NA">Not Applicable</option>
-        <option value="Mobilization">Applicable - Mobilization + Rental Charges</option>
-        <option value="Mobilization+Demobilization">Applicable - Mobilization + Rental Charges + Demobilization Charges</option>
-    </select>
+    <strong>Advance Payment :</strong> <?php echo $row['adv_pay'] ?>
 </p>
 
 <p class="terms_condition">
-    <strong>Operating Crew :</strong> 
-    <select name="operating_crew_select" id="operating_crew_select">
-        <option value="Single Operator">Single Operator</option>
-        <option value="Double Operator">Double Operator</option>
-        <option value="Single Operator + Helper">Single Operator + Helper</option>
-        <option value="Double Operator + Helper">Double Operator + Helper</option>
-    </select>
+    <strong>Operating Crew :</strong> <?php echo $row['crew'] ?>
 </p>
 
 <p class="terms_condition">
-    <strong>Operator Room Scope :</strong> 
-    <select name="operator_room_scope_select" id="operator_room_scope_select">
-        <option value="NA">Not Applicable</option>
-        <option value="Client Scope">In Client Scope</option>
-        <option value="Rental Company Scope">In Rental Company Scope</option>
-    </select>
+    <strong>Operator Room Scope :</strong> <?php echo $row['room'] ?>
 </p>
 
 <p class="terms_condition">
-    <strong>Crew Food Scope :</strong>  
-    <select name="crew_food_scope_select" id="crew_food_scope_select">
-        <option value="NA">Not Applicable</option>
-        <option value="Client Scope">In Client Scope</option>
-        <option value="Rental Company Scope">In Rental Company Scope</option>
-    </select>
+    <strong>Crew Food Scope :</strong>  <?php echo $row['food'] ?>
 </p>
 
 <p class="terms_condition">
-    <strong>Crew Travelling :</strong>  
-    <select name="crew_travelling_select" id="crew_travelling_select">
-        <option value="NA">Not Applicable</option>
-        <option value="Client Scope">In Client Scope</option>
-        <option value="Rental Company Scope">In Rental Company Scope</option>
-    </select>
+    <strong>Crew Travelling :</strong> <?php echo $row['travel'] ?> 
 </p>
 
 <p class="terms_condition">
     <strong>Breakdown :</strong> 
-    <select name="breakdown_select" id="breakdown_select">
-        <option value="NA">Free Time - Not Applicable</option>
-        <option value="6">Free Time - First 6 Hours</option>
-        <option value="12">Free Time - First 12 Hours</option>
-    </select> 
-    After free time, breakdown charges to be deducted on pro-rata basis
+<?php echo $row['brkdown'] ?>    After free time, breakdown charges to be deducted on pro-rata basis
 </p>
 
 
@@ -173,24 +132,16 @@ $row=mysqli_fetch_assoc($result);
 
 
 
-<div class="terms_area terms_condition" contenteditable="true">
-    <strong>Over time payment : </strong>   Applicable. OT charges at 100% pro-rata basis payable if equipment has worked beyond stipulated work shift, engine hours and on Sundays,National holidays                                
-                                   
-                                
-
+<div class="terms_area terms_condition" >
+    <strong>Over time payment : </strong><?php echo $row['ot_pay'] ?>
 </div>
 
 <p class="terms_condition">
-    <strong>Payment Terms :</strong> 
-    <select name="payment_terms_select" id="payment_terms_select">
-        <option value="">Within 7 Days Of invoice submission</option>
-        <option value="">Within 10 Days Of invoice submission</option>
-        <option value="">Within 30 Days Of invoice submission</option>
-        <option value="">Within 45 Days Of invoice submission</option>
-    </select>
+    <strong>Payment Terms :</strong> <?php echo $row['pay_terms'] ?>
+   
 </p>
-<div class="terms_area terms_condition" contenteditable="true">
-    <strong>Delay payment clause : </strong>   In case, the payment credit terms are not honoured, we reserve the right to hault the machine operators, and our rental charges shall be in force. Additionally, an interest of 18% PA to be charges on outstanding amount.                                 
+<div class="terms_area terms_condition" >
+    <strong>Delay payment clause : </strong><?php echo $row['delay_pay'] ?>
                                 
 
 </div>
@@ -198,48 +149,32 @@ $row=mysqli_fetch_assoc($result);
 
 <p class="terms_condition">
     <strong>Equipment Assembly :</strong> 
-    <select name="equipment_assembly_select" id="equipment_assembly_select">
-        <option value="">Not Applicable</option>
-        <option value="Unloading + Assembly + Dismentling + Loading">Unloading + Assembly + Dismentling + Loading</option>
-        <option value="Unloading & Loading">Unloading & Loading</option>
-    </select>
-</p>
+<?php echo $row['equipment_assembly']?></p>
 
 <p class="terms_condition">
-    <strong>TPI Scope :</strong> 
-    <select name="tpi_scope_select" id="tpi_scope_select">
-        <option value="">Not Required</option>
-        <option value="In Client Scope">In Client Scope</option>
-        <option value="In Rental Company">In Rental Company</option>
-    </select>
-</p>
+    <strong>TPI Scope :</strong> <?php echo $row['tpi'] ?> </p>
 
 <p class="terms_condition">
-    <strong>Safety And Security :</strong> 
-    <select name="safety_security_select" id="safety_security_select">
-        <option value="">Not Required</option>
-        <option value="In Client Scope">In Client Scope</option>
-        <option value="In Rental Company">In Rental Company</option>
-    </select>
+    <strong>Safety And Security :</strong> <?php echo $row['safety'] ?>
 </p>
 
 
 
 
 
-<div class="terms_area terms_condition" contenteditable="true">
-    <strong>Tools & Tackles :</strong>  Related Tools And Tackles , Required Safety PPE Kit And Gears To Be Provided By Client On FOC basis                                
+<div class="terms_area terms_condition" >
+    <strong>Tools & Tackles :</strong>  <?php echo $row['tools'] ?>                                
 
 </div>
 
 
 
-<div class="terms_area terms_condition" contenteditable="true">
-    <strong>GST :</strong> Applicable. Extra payable at actual invoice value at 18%.
+<div class="terms_area terms_condition" >
+    <strong>GST :</strong> <?php echo $row['gst'] ?>
 </div>
 
-<div class="terms_area terms_condition" contenteditable="true">
-    <strong>Force Majeure clause :</strong> If the equipment deployment gets delayed due to transit delays, plants related gate pass, loading at client site, forces of nature and reasons beyond our control, no penalty shall be levied on us.
+<div class="terms_area terms_condition" >
+    <strong>Force Majeure clause :</strong><?php echo $row['force_clause'] ?>
 </div>
 
 
@@ -256,52 +191,7 @@ $row=mysqli_fetch_assoc($result);
 </body>
 <script>
 function downloadPDF() {
-    // Fetch selected values from dropdowns
-    const contractPeriodSelect = document.querySelector('#contract_period_select');
-    const advancePaymentSelect = document.querySelector('#advance_payment_select');
-    const operatingCrewSelect = document.querySelector('#operating_crew_select');
-    const operatorRoomScopeSelect = document.querySelector('#operator_room_scope_select');
-    const crewFoodScopeSelect = document.querySelector('#crew_food_scope_select');
-    const crewTravellingSelect = document.querySelector('#crew_travelling_select');
-    const breakdownSelect = document.querySelector('#breakdown_select');
-    const equipmentAssemblySelect = document.querySelector('#equipment_assembly_select');
-    const tpiScopeSelect = document.querySelector('#tpi_scope_select');
-    const safetySecuritySelect = document.querySelector('#safety_security_select');
-    const paymentTermsSelect = document.querySelector('#payment_terms_select');
-
-    // Get selected option values
-    const equipmentAssemblyValue = equipmentAssemblySelect.value;
-    const tpiScopeValue = tpiScopeSelect.value;
-    const safetySecurityValue = safetySecuritySelect.value;
-    const contractPeriodValue = contractPeriodSelect.value;
-    const advancePaymentValue = advancePaymentSelect.value;
-    const operatingCrewValue = operatingCrewSelect.value;
-    const operatorRoomScopeValue = operatorRoomScopeSelect.value;
-    const crewFoodScopeValue = crewFoodScopeSelect.value;
-    const crewTravellingValue = crewTravellingSelect.value;
-    const breakdownValue = breakdownSelect.value;
-    const paymentTermsValue = paymentTermsSelect.value;
-
-    // Update HTML content with selected values (if needed, for display purpose)
-    // Optional: If you want to display the selected text in the HTML as well
-    // const contractPeriodText = contractPeriodSelect.options[contractPeriodSelect.selectedIndex].text;
-    // const advancePaymentText = advancePaymentSelect.options[advancePaymentSelect.selectedIndex].text;
-    // const operatingCrewText = operatingCrewSelect.options[operatingCrewSelect.selectedIndex].text;
-    // const operatorRoomScopeText = operatorRoomScopeSelect.options[operatorRoomScopeSelect.selectedIndex].text;
-    // const crewFoodScopeText = crewFoodScopeSelect.options[crewFoodScopeSelect.selectedIndex].text;
-    // const crewTravellingText = crewTravellingSelect.options[crewTravellingSelect.selectedIndex].text;
-    // const breakdownText = breakdownSelect.options[breakdownSelect.selectedIndex].text;
-
-    // Example: Update span elements if you need to display selected text visually
-    // document.querySelector('#contract_period_value').textContent = contractPeriodText;
-    // document.querySelector('#advance_payment_value').textContent = advancePaymentText;
-    // document.querySelector('#operating_crew_value').textContent = operatingCrewText;
-    // document.querySelector('#operator_room_scope_value').textContent = operatorRoomScopeText;
-    // document.querySelector('#crew_food_scope_value').textContent = crewFoodScopeText;
-    // document.querySelector('#crew_travelling_value').textContent = crewTravellingText;
-    // document.querySelector('#breakdown_value').textContent = breakdownText;
-
-    // Select the HTML element to be converted to PDF
+   
     const element = document.querySelector('.container_outer');
 
     // Perform PDF generation
