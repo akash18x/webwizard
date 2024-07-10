@@ -18,7 +18,10 @@ include 'partials/_dbconnect.php';
 <head>
     <meta charset="UTF-8">      <link rel="icon" href="favicon.jpg" type="image/x-icon">
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <link rel="stylesheet" href="tiles.css">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
     <script src="https://code.highcharts.com/highcharts.js"></script>
     <script src="https://code.highcharts.com/modules/export-data.js"></script>
     <script src="https://code.highcharts.com/modules/accessibility.js"></script>
@@ -29,7 +32,8 @@ include 'partials/_dbconnect.php';
         .center-block {
             height: 300px;
             /* border: 2px solid blue; */
-        }
+        } 
+
     </style>
 </head>
 <body>
@@ -41,12 +45,52 @@ include 'partials/_dbconnect.php';
             <li><a href="logout.php">Log Out</a></li></ul>
         </div>
     </div>
-    <div class="outercard">
+<!--     <div class="outercard">
             <div class="card_container_purchase">
             <div class="button-52" onclick="location.href='view_listing.php'" >Active Listings</div>
             <div class="button-52" onclick="location.href='viewsold.php'" >Sold Listings</div>
+        </div>  --> 
+       
+        
+  <div class="newtilecontainer">
+<article class="article-wrapper" onclick="location.href='view_listing.php'">
+  <div class="rounded-lg container-project1 lis">
+    </div>
+    <div class="project-info">
+      <div class="flex-pr">
+        <div class="project-title text-nowrap">Active Listings</div>
+          <div class="project-hover">
+            <svg style="color: black;" xmlns="http://www.w3.org/2000/svg" width="2em" height="2em" color="black" stroke-linejoin="round" stroke-linecap="round" viewBox="0 0 24 24" stroke-width="2" fill="none" stroke="currentColor"><line y2="12" x2="19" y1="12" x1="5"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+            </div>
+          </div>
+         <div class="types">
+          <!--   <span style="background-color: rgba(165, 96, 247, 0.43); color: rgb(85, 27, 177);" class="project-type">• Add Clients</span>
+             <span class="project-type">• Manage Clients</span>  -->
+        </div>
+    </div>
+</article>
+
+<article class="article-wrapper" onclick="location.href='viewsold.php'" >
+  <div class="rounded-lg container-project1 lis">
+    </div>
+    <div class="project-info">
+      <div class="flex-pr">
+        <div class="project-title text-nowrap">Sold Listings</div>
+          <div class="project-hover">
+            <svg style="color: black;" xmlns="http://www.w3.org/2000/svg" width="2em" height="2em" color="black" stroke-linejoin="round" stroke-linecap="round" viewBox="0 0 24 24" stroke-width="2" fill="none" stroke="currentColor"><line y2="12" x2="19" y1="12" x1="5"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+            </div>
+          </div>
+           <div class="types">
+            <!-- <span style="background-color: rgba(165, 96, 247, 0.43); color: rgb(85, 27, 177);" class="project-type"> • Manage Bills </span>
+             <span class="project-type"> • Generate Bills </span> -->
         </div> 
-        <div class="chartdatacontainer_sellingfleet"   >
+    </div>
+</article>
+</div> 
+<br> 
+<br>
+
+    <div class="chartdatacontainer_sellingfleet"   >
     <div class="container123" style="width: 40%; height: 300px;">
             <div id="container" class="center-block"></div>
         </div>

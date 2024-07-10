@@ -1,37 +1,37 @@
 <?php
 include_once 'partials/_dbconnect.php'; // Include the database connection file
 session_start();
-// $email = $_SESSION["email"];
 $companyname001 = $_SESSION['companyname'];
-
 ?>
+
 <style>
   <?php include "style.css" ?>
 </style>
 <script>
-    <?php include "main.js" ?>
-    </script>
+  <?php include "main.js" ?>
+</script>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">      <link rel="icon" href="favicon.jpg" type="image/x-icon">
-
+    <meta charset="UTF-8">
+    <link rel="icon" href="favicon.jpg" type="image/x-icon">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <title>Document</title>
 </head>
 <body>
 <div class="navbar1">
-        <div class="iconcontainer">
+    <div class="iconcontainer">
         <ul>
-        <li><a href="rental_dashboard.php">Dashboard</a></li>
+            <li><a href="rental_dashboard.php">Dashboard</a></li>
             <li><a href="view_news.php">News</a></li>
-
-            <li><a href="logout.php">Log Out</a></li></ul>
-        </div>
+            <li><a href="logout.php">Log Out</a></li>
+        </ul>
     </div>
-    <?php
-    include_once 'partials/_dbconnect.php'; // Include the database connection file
+</div>
+
+<?php
+include_once 'partials/_dbconnect.php'; // Include the database connection file
 
 $result = mysqli_query($conn, "SELECT * FROM `requirement_price_byrental` where `rental_name`='$companyname001' order by id desc");
 if(mysqli_num_rows($result) > 0) {
@@ -50,22 +50,16 @@ if(mysqli_num_rows($result) > 0) {
         echo '<td>' . $row['duration'] . '</td>';
         echo '<td>' . $row['working_shift'] . '</td>';
         echo '<td>' . $row['price_quoted'] . '</td>';
-        // echo '<td>' . $row['quote_price'] . '</td>';
-
-
         ?>
-       <td>
-        <a class='btn_listing' href='edit_rental_price.php?id=<?php echo $row['id']; ?>'> Edit Price</a>
-    </td>;
+        <td>
+            <a class='btn_listing' href='edit_rental_price.php?id=<?php echo $row['id']; ?>'>Edit Price</a>
+        </td>
         <?php
         echo '</tr>';
     }
-
     echo '</table>';
-
 }
 ?>
 
-        
 </body>
 </html>

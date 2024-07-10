@@ -73,8 +73,75 @@ $row_exist=mysqli_fetch_assoc($result_exist);
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-f1sFFmh2aWzj45p7NlsbK2G7Fl+E0ueNc+gJiSAwDY0+0w8pTKXn1foU9s9xqjumT2cEiS0TRgNpS0+8A1fFWQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Document</title> 
+    <style> 
+        .oemsubusers {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 
-    <title>Document</title>
+.subuser-container {
+    width: 100%;
+    max-width: 600px;
+}
+
+.subuser_div h2 {
+    text-align: center;
+}
+
+.trial1 {
+    position: relative;
+    margin-bottom: 15px;
+}
+
+.input02 {
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.placeholder2 {
+    position: absolute;
+    top: -20px;
+    left: 10px;
+    font-size: 14px;
+    color: #555;
+}
+
+.outer02 {
+    display: flex;
+    justify-content: space-between;
+}
+
+.row {
+    position: relative;
+    width: 100%;
+}
+
+.toggle-password {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    cursor: pointer;
+}
+
+.epc-button {
+    padding: 10px 20px;
+    background-color: #4067B5;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.epc-button:hover {
+    background-color: #d94404;
+}
+
+    </style>
 </head>
 <body>
 <div class="navbar1">
@@ -116,67 +183,75 @@ if($showemail){
         </div>
       </label>';
     }
-    ?>
-<form action="rental_employee.php" method="POST" class="oemsubusers">
+    ?><form action="rental_employee.php" method="POST" class="oemsubusers">
     <div class="subuser-container">
-        <div class="subuser_div"><h2>Add SubUsers</h2></div>
+        <div class="subuser_div">
+            <h2>Add SubUsers</h2>
+        </div>
         <div class="trial1">
-            <input type="text" name="username" class="input02">
+            <input type="text" name="username" class="input02" required>
             <label for="" class="placeholder2">User Name</label>
         </div>
         <div class="trial1">
-        <input type="text" name="subemail" placeholder="" class="input02" required>
-        <label class="placeholder2">Email</label>
-    </div>
+            <input type="email" name="subemail" class="input02" required>
+            <label class="placeholder2">Email</label>
+        </div>
         <div class="outer02">
             <div class="trial1">
-            <div class="row">
-
-            <input type="password" name="password" placeholder="" required class="input02">
-            <label for="" class="placeholder2">Password</label>
-          </div>
-        </div>
-        <div class="trial1" >
-
-        <div class="row">
-            <input type="password" name="cpassword" placeholder="" required class="input02">
-            <label for="" class="placeholder2">Confirm Password</label>
-          </div>
-        </div>
-
-          </div>
-        
-        
-        <div class="outer02">
-        <div class="trial1">
-        <input type="text" name="company_name" placeholder="" value="<?php echo $companyname001  ?>" class="input02" readonly>
-        <label class="placeholder2">Company</label>
-        </div>
-        <div class="trial1">
-        <input type="text" name="enterprise_type" placeholder="" value="<?php echo $row_exist['enterprise']  ?>" class="input02" readonly>
-        <label class="placeholder2">Enterprise Type</label>
-        </div></div>
-        <div class="outer02">
-        <div class="trial1">
-        <input type="text" name="contact" placeholder="" class="input02" required>
-        <label class="placeholder2">Contact Number</label>
-        </div> 
-        <div class="trial1">
-            <select name="designation" id="" class="input02">
-                <option value="" disabled selected >Department</option>
-                <option value="marketing">Marketing</option>
-                <option value="operation">Operation and Maintanance</option>
-                <option value="accounts">Accounts</option>
-                <option value="management">Management</option>
-            </select>
+                <div class="row">
+                    <input type="password" name="password" class="input02" id="password" required>
+                    <label for="" class="placeholder2">Password</label>
+                    <span class="toggle-password"><i class="far fa-eye" onclick="togglePassword('password')"></i></span>
+                </div>
             </div>
+            <div class="trial1">
+                <div class="row">
+                    <input type="password" name="cpassword" class="input02" id="cpassword" required>
+                    <label for="" class="placeholder2">Confirm Password</label>
+                    <span class="toggle-password"><i class="far fa-eye" onclick="togglePassword('password')"></i></span>
+                </div>
             </div>
-
+        </div>
+        <div class="outer02">
+            <div class="trial1">
+                <input type="text" name="company_name" value="<?php echo $companyname001 ?>" class="input02" readonly>
+                <label class="placeholder2">Company</label>
+            </div>
+            <div class="trial1">
+                <input type="text" name="enterprise_type" value="<?php echo $row_exist['enterprise'] ?>" class="input02" readonly>
+                <label class="placeholder2">Enterprise Type</label>
+            </div>
+        </div>
+        <div class="outer02">
+            <div class="trial1">
+                <input type="text" name="contact" class="input02" required>
+                <label class="placeholder2">Contact Number</label>
+            </div>
+            <div class="trial1">
+                <select name="designation" class="input02" required>
+                    <option value="" disabled selected>Department</option>
+                    <option value="marketing">Marketing</option>
+                    <option value="operation">Operation and Maintenance</option>
+                    <option value="accounts">Accounts</option>
+                    <option value="management">Management</option>
+                </select>
+            </div>
+        </div>
         <button type="submit" class="epc-button">Add SubUser</button>
         <br>
     </div>
 </form>
+
 <br>
-<br>
+<br> 
+
+<script>
+function togglePassword(fieldId) {
+    var field = document.getElementById(fieldId);
+    var fieldType = field.getAttribute('type') === 'password' ? 'text' : 'password';
+    field.setAttribute('type', fieldType);
+}
+</script>
+
 </body>
 </html>

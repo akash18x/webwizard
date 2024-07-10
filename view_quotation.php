@@ -38,23 +38,178 @@ if (mysqli_num_rows($result_second) > 0) {
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">      <link rel="icon" href="favicon.jpg" type="image/x-icon">
-
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Quotation</title>
+    
+    <style> 
+       
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Global styles */
+body {
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    line-height: 1.6;
+    background-color: #f4f4f4;
+    margin: 20px;
+}
+
+.container_outer {
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    padding: 20px;
+    border-radius: 8px; 
+
+}
+
+.companylogo {
+    width: 150px;
+    height: 150px;
+    background-image: url('img/sign.jpg');
+    background-size: cover;
+    background-position: center;
+    border-radius: 50%;
+    margin: 0 auto;
+    margin-bottom: 20px;
+}
+
+.date, .ref {
+    margin-bottom: 10px;
+}
+
+.tocontainer {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.toadress, .to_contactperson {
+    flex: 1;
+    padding: 10px;
+}
+
+.to_contactperson p {
+    margin-bottom: 5px;
+}
+
+.salutation {
+    margin-bottom: 20px;
+}
+
+.table_info {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px; 
+    font-size:13px;
+}
+
+.table_info th, .table_info td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.table_info th {
+    background-color: #f2f2f2;
+}
+
+.secondrow_quotation {
+    background-color: #f9f9f9;
+}
+
+.equipment_details_td {
+    font-size: 12px;
+}
+
+.withregard_section {
+    margin-bottom: 20px;
+}
+
+.terms {
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.heading_terms {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.terms_condition {
+    margin-bottom: 5px;
+}
+
+.sender_office_address {
+    margin-top: 20px;
+}
+
+.watermark {
+    font-size: 12px;
+    margin-top: 10px;
+    color: #999;
+}
+.button_container {
+    text-align: right;
+    margin-top: 20px;
+}
+.print_quotation{
+    height: 50px;
+    border: none;
+    width:  190px;
+    background-color: #4067B5;
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+    font-size: 14px;
+    
+    border-radius: 7px;
+}
+.button_container{
+    width: 98%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.view_my_quotation{
+    width: 94%;
+    border: 2px solid #4067B5;
+    margin-left: 3%;
+    /* margin-top: 25px; */
+    border-collapse: collapse;
+    background-color: #4067B5;
+    color: white;
+    height: 35px;
+
+} 
+
+.withregard_section {
+    margin-bottom: 20px;
+}
+
+@media print {
+    .button_container {
+        display: none!important;
+    }
+}
+
+    </style>
+    <!-- Include necessary scripts --> 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.3/html2pdf.bundle.min.js"></script>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.3/html2pdf.bundle.min.js"></script>
-
-    <link rel="stylesheet" href="style.css">
-    <style>
-        <?php include "style.css" ?>
-        </style>
-    <title>Document</title>
+</head>
 </head>
     <div class="container_outer">
     <div class="entire_quotation_container">
-    <div class="companylogo" style="background-image: url('img/<?php echo ($row_logo_fetch['letter_head']); ?>');"></div>
+    <div class="companylogo" style="background-image: url('img/sign.jpg');"></div>
     <div class="date">Date: <?php echo $row['quote_date'] ?></div>
     <?php $firstThreeLetters = substr($companyname001, 0, 3); ?>
     <div class="ref">Ref No: &nbsp<?php echo $firstThreeLetters ?> / <?php echo substr($row['quote_date'], 0, 4);  ?> / <?php echo $row['sno'] ?></div>
